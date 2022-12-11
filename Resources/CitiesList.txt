@@ -1,0 +1,12 @@
+$city|country|syndicate|background|
+Amsterdam|Netherlands|Dutch Iris Trading Company|amsterdam.png
+Buenos Aires|Argentina|South American Cartel|buenos_aires.png
+Cape Town|South Africa|Dutch Iris Trading Company|cape_town.png
+Chicago|USA|North American Flower Trade Arbitrageurs|chicago.png
+Los Angeles|USA|North American Flower Trade Arbitrageurs|los_angeles.png
+Mexico City|Mexico|North American Flower Trade Arbitrageurs|mexico_city.png
+Mumbai|India|Russian Mafia|mumbai.png
+New York City|USA|North American Flower Trade Arbitrageurs|new_york_city.png
+Rio de Janeiro|Brazil|South American Cartel|rio_de_janeiro.png
+Saint Petersburg|Russia|Russian Mafia|saint_petersburg.png
+Shanghai|China|Russian Mafia|shanghai.png

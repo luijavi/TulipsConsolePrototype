@@ -1,0 +1,32 @@
+$name|rarity|longevity|hotness|cities
+Azalea|2|3|2|Rio de Janeiro#Saint Petersburg#Shanghai
+Bleeding-heart|4|1|3|Amsterdam#Shanghai#Mumbai
+California poppy|3|3|1|Los Angeles
+Cattleya orchid|3|3|3|Rio de Janeiro
+Ceibo|3|2|2|Buenos Aires
+Cherry blossom|2|2|2|Mumbai#Saint Petersburg#Shanghai
+Common blue violet|2|3|1|Chicago
+Crocus|2|3|1|Cape Town#Shanghai#Saint Petersburg#Amsterdam
+Daffodil|1|3|1|*
+Dahlia|3|1|3|Mexico City
+Daisie|1|3|1|*
+Delphinium|3|1|3|*
+Desert sunflower|2|3|2|*
+Frangipani|3|1|3|*
+Gardenia|1|2|1|*
+Geranium|1|2|2|*
+Hibiscus|1|2|2|*
+Hydrangea|2|1|3|*
+Jasmine|3|1|2|Mumbai
+King protea|3|1|3|Cape Town
+Koki'o flower|4|1|3|Los Angeles#New York City
+Lavender|2|2|2|Amsterdam#Cape Town#Mumbai
+Lotus|4|1|3|Mumbai
+Peony|3|2|2|Chicago
+Plum blossoms|3|2|3|Shanghai
+Rose|5|1|3|Chicago#Saint Petersburg
+Saguaro flower|3|3|1|Los Angeles
+Texas bluebonnet|3|1|2|Los Angeles
+Tiger flower|3|1|3|Los Angeles#Mexico City#Rio de Janeiro#Buenos Aires
+Tulip|3|2|3|Amsterdam
+Mexican rose|6|1|3|none

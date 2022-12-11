@@ -1,0 +1,9 @@
+$Important notes:
+$	turn_type valid values
+$		n = Next Day
+$		t = Travel (fly away)
+$		b = Both
+$	flags (inventory and other) are either 1 (true) or 0 (false)
+$	probability must be whole number between 0 and 100
+$
+$turn_type|cash_impact|health_impact|inventory_flower_flag|inventory_gun_flag|other_flag|probability|text
