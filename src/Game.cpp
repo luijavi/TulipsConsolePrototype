@@ -358,7 +358,7 @@ void Game::FlyAway()
 	bool valid_answer = false;
 	while (!valid_answer)
 	{
-		std::cout << "FLY AWAY\n"
+		std::cout << "\nFLY AWAY\n"
 			<< "======================================================================\n"
 			<< "DESTINATION CITY\n"
 			<< "======================================================================\n";
@@ -389,17 +389,26 @@ void Game::FlyAway()
 		std::getline(std::cin, player_choice);
 		std::cout << "\n";
 
-		if (std::toupper(player_choice.at(0)) == 'E')
+
+		
+		// Check that player choice is numeric
+		if (player_choice.empty())
 		{
-			return;
+			std::cout << "\nInvalid answer!\n";
 		}
-		else if (player_choice.empty() 
-			     || std::all_of(player_choice.begin(), player_choice.end(), ::isalpha)
-			     || std::all_of(player_choice.begin(), player_choice.end(), ::iscntrl))
+		else if (!std::all_of(player_choice.begin(), player_choice.end(), ::isdigit)
+			|| player_choice.empty())
 		{
-			std::cout << "Invalid answer!\n";
+			if (player_choice.at(0) == 'e' || player_choice.at(0) == 'E')
+			{
+				return;
+			}
+			else
+			{
+				std::cout << "\nInvalid answer!\n";
+			}
 		}
-		else if (std::stoi(player_choice) < option_num)
+		else if (std::stoi(player_choice) > 0 && std::stoi(player_choice) < option_num)
 		{
 			// TODO: Figure out what to do with this warning (C26451)
 			m_current_city = m_cities.at(city_options.at(std::stoi(player_choice) - 1));
@@ -409,7 +418,7 @@ void Game::FlyAway()
 		}
 		else
 		{
-			std::cout << "Invalid answer!\n";
+			std::cout << "\nInvalid answer!\n";
 		}
 	}
 }
