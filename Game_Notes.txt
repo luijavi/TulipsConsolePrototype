@@ -1,7 +1,0 @@
-TODO:
-    * Figure out rounding issue with doubles
-    * Have rose only appear if there's a quantity...
-    * Random events
-    * Consider not having flower objects own their quantity - maybe some sort of inventory-like system
-    * Change the "Sell" from market for flowers to only be listed in the inverntory
-    * Maybe handle user input in a better way? Like, a helper function/lib/class? 
