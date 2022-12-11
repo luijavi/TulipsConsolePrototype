@@ -4,6 +4,18 @@
 #include <sstream>
 #include "Flower.h"
 
+Flower::Flower()
+	:
+	m_name(""),
+	m_rarity(Rarity::kCommon),
+	m_longevity(0),
+	m_hotness(0),
+	m_buy_price(0.0),
+	m_sell_price(0.0),
+	m_quantity(0)
+{
+}
+
 std::string Flower::GetName() const
 {
 	return m_name;
@@ -50,6 +62,7 @@ void Flower::IncreaseQuantity(int quantity)
 	assert(quantity > 0);
 	m_quantity += quantity;
 }
+
 
 void Flower::SetName(std::string_view name)
 {

@@ -33,6 +33,9 @@ struct QuantityRange
 class Flower
 {
 public:
+	// TODO: Create parameterized constructors and maybe get rid of all these setters
+	Flower();
+
 	// Getter(s)/Setter(s)
 	void SetName(std::string_view name);
 	void SetRarity(Rarity rarity);
