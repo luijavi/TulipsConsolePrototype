@@ -333,8 +333,8 @@ void Game::SetRarityValues()
 				p_vals.rarity_key = static_cast<Rarity>(std::stoi(rarity_key));
 				p_vals.min_price = static_cast<double>(std::stof(min_price));
 				p_vals.max_price = static_cast<double>(std::stof(max_price));
-				p_vals.min_quantity = static_cast<double>(std::stof(min_quantity));
-				p_vals.max_quantity = static_cast<double>(std::stof(max_quantity));
+				p_vals.min_quantity = static_cast<int>(std::stoi(min_quantity));
+				p_vals.max_quantity = static_cast<int>(std::stoi(max_quantity));
 
 				rarity_values.emplace(p_vals.rarity_key, p_vals);
 			}
@@ -393,7 +393,9 @@ void Game::FlyAway()
 		{
 			return;
 		}
-		else if (player_choice.empty() || std::all_of(player_choice.begin(), player_choice.end(), ::isalpha))
+		else if (player_choice.empty() 
+			     || std::all_of(player_choice.begin(), player_choice.end(), ::isalpha)
+			     || std::all_of(player_choice.begin(), player_choice.end(), ::iscntrl))
 		{
 			std::cout << "Invalid answer!\n";
 		}
