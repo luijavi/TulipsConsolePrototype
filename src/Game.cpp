@@ -36,9 +36,12 @@ void Game::Run()
 		// Initializes a new game if m_day_num is 0
 		if (m_day_num == 0)
 		{
-			m_current_city = m_cities.find("Chicago")->second;
-
+			// Intro message
+			std::cout << "Welcome to Tulips of the Underground!\n\n";
+			std::cout << "You've finally decided to try your hand at Botanical Black Market.\n\n";
 			std::cout << "You withdraw your entire lifesavings to start trading in illicit flowers...\n";
+			
+			m_current_city = m_cities.find("Chicago")->second;
 			m_player.IncreaseCash(5000);
 			m_player.IncreaseHealth(100);
 
