@@ -3,7 +3,7 @@ TODO:
     * Have rose only appear if there's a quantity...
     * Random events
     * Consider not having flower objects own their quantity - maybe some sort of inventory-like system
-    * Change the "Sell" from market for flowers to only be listed in the inverntory
+    * Change the "Sell" from market for flowers to only be listed in the inventory
     * Maybe handle user input in a better way? Like, a helper function/lib/class? 
     * Consider using std::exceptions for handling invalid input (e.g., std::stoi)
     * Create parameterized constructors for Flower class

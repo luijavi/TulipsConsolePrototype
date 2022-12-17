@@ -2,6 +2,13 @@
 #include <map>
 #include <string>
 
+// Rankings determined by the player score. One of the main mechanics
+// (Work your way up the criminal flower underworld
+enum class Ranks
+{
+	kFlowerPedler = 1
+};
+
 class Player
 {
 public:
