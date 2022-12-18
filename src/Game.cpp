@@ -19,45 +19,45 @@ Game::Game()
 	//LoadRandomEncounters(); // Implement later
 	LoadFlowers();
 	SetRarityValues();
-
+	InitNewGame();
 }
 
 Game::~Game()
 {
 }
 
-// Includes main game loop and exit conditions. If the game has just started,
-// and m_day_num is 0, then it initializes the game to start in Chicago, along
-// with starting cash and health.
+// Main game loop
 void Game::Run()
 {
-	while (!m_has_quit)
+	while (!GameOver())
 	{
-		// Initializes a new game if m_day_num is 0
-		if (m_day_num == 0)
-		{
-			// Intro message
-			std::cout << "Welcome to Tulips of the Underground!\n\n";
-			std::cout << "You've finally decided to try your hand at Botanical Black Market.\n\n";
-			std::cout << "You withdraw your entire lifesavings to start trading in illicit flowers...\n";
-			
-			m_current_city = m_cities.find("Chicago")->second;
-			m_player.IncreaseCash(5000);
-			m_player.IncreaseHealth(100);
-
-			std::cout << "Your cash account has gone up by ";
-			
-			std::cout << luis_fmt::to_cash(m_player.GetCash()) << "\n\n";
-			
-			m_current_city->UpdateMarketPrices(rarity_values);
-			
-			++m_day_num;
-		}
-
 		DisplayStats();
 		DisplayMenu();
 		ProcessInput();
 	}
+}
+
+void Game::InitNewGame()
+{
+	m_day_num = 0;
+
+	// Intro message
+	std::cout << "Welcome to Tulips of the Underground!\n\n";
+	std::cout << "You've finally decided to try your hand at Botanical Black Market.\n\n";
+	std::cout << "You withdraw your entire lifesavings to start trading in illicit flowers...\n";
+
+	// Init city and player
+	m_current_city = m_cities.find(kStartingCity)->second;
+	m_player.IncreaseCash(KStartingCash);
+	m_player.IncreaseHealth(kStartingHealth);
+
+	std::cout << "Your cash account has gone up by ";
+
+	std::cout << luis_fmt::to_cash(m_player.GetCash()) << "\n\n";
+
+	m_current_city->UpdateMarketPrices(m_rarity_values);
+
+	++m_day_num;
 }
 
 // 
@@ -124,15 +124,17 @@ void Game::ProcessInput()
 		case 'Q':
 		{
 			// Quit
-			std::cout << "Thanks for playing!\n" << std::endl;
-			m_has_quit = true;
+			if (ConfirmQuit())
+			{
+				m_has_quit = true;
+			}
 
 		} break;
 
 		default:
 		{
 			std::cout << "Invalid entry!\n" << std::endl;
-		}
+		} break;
 	}
 
 }
@@ -339,7 +341,7 @@ void Game::SetRarityValues()
 				p_vals.min_quantity = static_cast<int>(std::stoi(min_quantity));
 				p_vals.max_quantity = static_cast<int>(std::stoi(max_quantity));
 
-				rarity_values.emplace(p_vals.rarity_key, p_vals);
+				m_rarity_values.emplace(p_vals.rarity_key, p_vals);
 			}
 		}
 		file.close();
@@ -353,7 +355,7 @@ void Game::NextDay()
 	{
 		std::cout << "Random Encounter!" << std::endl;
 	}
-	m_current_city->UpdateMarketPrices(rarity_values);
+	m_current_city->UpdateMarketPrices(m_rarity_values);
 }
 
 void Game::FlyAway()
@@ -416,7 +418,7 @@ void Game::FlyAway()
 			// TODO: Figure out what to do with this warning (C26451)
 			m_current_city = m_cities.at(city_options.at(std::stoi(player_choice) - 1));
 			++m_day_num;
-			m_current_city->UpdateMarketPrices(rarity_values);
+			m_current_city->UpdateMarketPrices(m_rarity_values);
 			valid_answer = true;
 		}
 		else
@@ -424,4 +426,96 @@ void Game::FlyAway()
 			std::cout << "\nInvalid answer!\n";
 		}
 	}
+}
+
+bool Game::GameOver()
+{
+	if (m_player.GetHealth() <= 0 && !PlayAgain(GameOverConditions::kPlayerDead))
+	{
+		return true;
+	}
+	else if (m_has_quit && !PlayAgain(GameOverConditions::kPlayerQuit))
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool Game::PlayAgain(const GameOverConditions& reason)
+{
+	std::string player_answer;
+	
+	// Print message
+	switch (reason)
+	{
+
+		case GameOverConditions::kPlayerDead:
+		{
+			std::cout << "\nYou've died!\n";
+		} break;
+
+		case GameOverConditions::kPlayerQuit:
+		{
+			std::cout << "\nThanks for playing!\n";
+		} break;
+	}
+
+	std::string answer;
+
+	std::cout << "\nPlay again? (Y/N)\n"
+		<< "> ";
+
+	while (std::getline(std::cin, answer))
+	{
+		if (std::toupper(answer[0]) == 'Y')
+		{
+			ResetGame();
+			return true;
+		}
+		else if (std::toupper(answer[0]) == 'N')
+		{
+			std::cout << "\nGoodbye!\n";
+			return false;
+		}
+		else
+		{
+			std::cout << "\nInvalid answer!\n";
+		}
+	}
+
+	return false;
+}
+
+void Game::ResetGame()
+{
+	InitNewGame();
+}
+
+bool Game::ConfirmQuit()
+{
+	std::cout << "\nAre you sure you want to quit? (Y/N)\n"
+		      << "> ";
+
+	std::string answer = "N";
+
+	while (std::getline(std::cin, answer))
+	{
+		if (std::toupper(answer[0]) == 'Y')
+		{
+			return true;
+		}
+		else if (std::toupper(answer[0]) == 'N')
+		{
+			return false;
+		}
+		else
+		{
+			std::cout << "\nInvalid answer!\n";
+			std::cout << "\nAre you sure you want to quit? (Y/N)\n"
+				      << "> ";
+		}
+	}
+
+	return false;
 }

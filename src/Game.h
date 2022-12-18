@@ -1,4 +1,5 @@
 #pragma once
+
 #include <map>
 #include <string>
 #include <list>
@@ -7,7 +8,6 @@
 #include "Player.h"
 #include "City.h"
 #include "RandomEncounter.h"
-// #include "Menu.h"
 
 enum class MainMenuOptions
 {
@@ -19,15 +19,26 @@ enum class MainMenuOptions
 	kQuit
 };
 
+enum class GameOverConditions
+{
+	kUndefined,
+	kPlayerDead,
+	kPlayerQuit
+};
+
 class Game
 {
 public:
 	Game();
 	~Game();
+	Game(const Game&) = delete;
+	Game& operator=(const Game&) = delete;
+	Game(Game&&) = delete;
 
 	void Run();
 
 private:
+	void InitNewGame();
 	void DisplayStats();
 	void DisplayMenu();
 	void ProcessInput();
@@ -40,10 +51,19 @@ private:
 
 	void NextDay();
 	void FlyAway();
+
+	bool GameOver();
+	bool PlayAgain(const GameOverConditions& reason);
+	void ResetGame();
+	bool ConfirmQuit();
 private:
+	static constexpr int kStartingHealth = 100;
+	static constexpr double KStartingCash = 5000.0;
+	const std::string kStartingCity = "Chicago";
+	
 	Player m_player;
 
-	std::map<Rarity, RarityValues> rarity_values;
+	std::map<Rarity, RarityValues> m_rarity_values;
 
 	std::list<RandomEncounter> m_encounters;
 
