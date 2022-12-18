@@ -11,6 +11,10 @@ Player::Player()
 {
 }
 
+Player::~Player()
+{
+}
+
 void Player::AdjustHealth(int amount)
 {
 	amount < 0 ? DecreaseHealth(amount) : IncreaseHealth(amount);

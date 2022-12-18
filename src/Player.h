@@ -4,15 +4,19 @@
 
 // Rankings determined by the player score. One of the main mechanics
 // (Work your way up the criminal flower underworld
-enum class Ranks
-{
-	kFlowerPedler = 1
-};
+//enum class Ranks
+//{
+//	kFlowerPedler = 1
+//};
 
 class Player
 {
 public:
 	Player();
+	~Player();
+	Player(const Player&) = delete;
+	Player& operator=(const Player&) = delete;
+	Player(Player&&) = delete;
 
 	void AdjustHealth(int amount);
 	void AdjustCash(int amount);
