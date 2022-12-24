@@ -33,7 +33,7 @@ bool LoadAndParse(const std::string& filename, std::map<std::string, MapType>& d
 				std::istringstream data(line);
 				std::string key;
 				std::getline(data, key, '|');
-				destination.insert(key, MapType(line));
+				destination.insert(key, MapType(data));
 			}
 		}
 		return true;
