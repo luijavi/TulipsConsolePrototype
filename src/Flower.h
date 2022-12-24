@@ -35,6 +35,7 @@ class Flower
 public:
 	// TODO: Create parameterized constructors and maybe get rid of all these setters
 	Flower();
+	Flower(std::istringstream& data);
 
 	// Getter(s)/Setter(s)
 	void SetName(std::string_view name);
@@ -63,6 +64,7 @@ private:
 	double m_buy_price;
 	double m_sell_price;
 	int m_quantity;	// TODO: Quantity should probably not be in Flower class
+	std::set<std::string> m_cities;
 };
 
 

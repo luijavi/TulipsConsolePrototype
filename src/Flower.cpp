@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cassert>
 #include <sstream>
+
 #include "Flower.h"
 
 Flower::Flower()
@@ -14,6 +15,39 @@ Flower::Flower()
 	m_sell_price(0.0),
 	m_quantity(0)
 {
+}
+
+Flower::Flower(std::istringstream& data)
+	:
+	m_buy_price(0.0),
+	m_sell_price(0.0),
+	m_quantity(0)
+{
+	const char delim = '|';
+	std::getline(data, m_name, delim);
+	
+	std::string rarity;
+	std::string longevity;
+	std::string hotness;
+	std::string cities;
+
+	std::getline(data, rarity, delim);
+	std::getline(data, longevity, delim);
+	std::getline(data, hotness, delim);
+	std::getline(data, cities, delim);
+
+	m_rarity = static_cast<Rarity>(std::stoi(rarity));
+	m_longevity = std::stoi(longevity);
+	m_hotness = std::stoi(hotness);
+
+	std::istringstream cities_data(cities);
+
+	while (!cities_data.eof())
+	{
+		std::string c;
+		std::getline(cities_data, c, '#');
+		m_cities.insert(c);
+	}
 }
 
 std::string Flower::GetName() const
