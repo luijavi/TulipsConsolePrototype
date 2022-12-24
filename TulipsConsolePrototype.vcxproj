@@ -93,6 +93,7 @@
     <ClInclude Include="src\City.h" />
     <ClInclude Include="src\Flower.h" />
     <ClInclude Include="src\RandomEncounter.h" />
+    <ClInclude Include="src\Resource.h" />
     <ClInclude Include="src\Utility.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Menu.h" />
