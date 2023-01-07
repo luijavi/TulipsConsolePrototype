@@ -22,5 +22,5 @@ namespace luis_ui
 	};
 
 	// TODO: Does the order 
-	std::variant<int, double, char, std::string> Read(std::string_view prompt, OutputType = OutputType::kString);
+	std::variant<int, double, char, std::string> Read(std::string_view prompt, OutputType return_type = OutputType::kString);
 }
