@@ -16,7 +16,7 @@ namespace luis_ui
 	enum class OutputType
 	{
 		kInt,
-		kDouble,
+		kReal,
 		kChar,
 		kString
 	};
