@@ -21,6 +21,7 @@ namespace luis_ui
 		kString
 	};
 
-	// TODO: Does the order 
-	std::variant<int, double, char, std::string> Read(std::string_view prompt, OutputType return_type = OutputType::kString);
+	// TODO: Does the order of types in variant matter?
+	std::variant<int, double, char, std::string> 
+		GetInput(std::string_view prompt, OutputType output_type = OutputType::kString, bool newline_input = false);
 }
