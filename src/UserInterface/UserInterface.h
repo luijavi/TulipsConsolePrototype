@@ -1,6 +1,8 @@
 #pragma once
 #include <variant>
 #include <string>
+#include <vector>
+#include <optional>
 
 //enum class PromptType
 //{
@@ -24,13 +26,16 @@ enum class OutputType
 struct InputParameters
 {
 	OutputType output_type = OutputType::kString;
+	bool new_line_input = false;
+	bool validate_input = true;
 	std::string prompt;
-	bool read_on_new_line = false;
-
+	std::string invalid_input_message;
+	std::optional<std::vector<UserInputType>> valid_responses;
+	std::optional<std::variant<std::monostate, double, int>> min_value;
+	std::optional<std::variant<std::monostate, double, int>> max_value;
 };
 
 namespace luis_ui
 {
-	// TODO: Does the order of types in variant matter?
-	UserInputType GetInput(InputParameters input_params);
+	UserInputType GetInput(const InputParameters& input_params);
 }
