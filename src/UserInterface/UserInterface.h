@@ -11,17 +11,26 @@
 //};
 //
 
+typedef std::variant<int, double, char, std::string> UserInputType;
+
+enum class OutputType
+{
+	kInt,
+	kReal,
+	kChar,
+	kString
+};
+
+struct InputParameters
+{
+	OutputType output_type = OutputType::kString;
+	std::string prompt;
+	bool read_on_new_line = false;
+
+};
+
 namespace luis_ui
 {
-	enum class OutputType
-	{
-		kInt,
-		kReal,
-		kChar,
-		kString
-	};
-
 	// TODO: Does the order of types in variant matter?
-	std::variant<int, double, char, std::string> 
-		GetInput(std::string_view prompt, OutputType output_type = OutputType::kString, bool newline_input = false);
+	UserInputType GetInput(InputParameters input_params);
 }

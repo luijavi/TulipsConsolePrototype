@@ -1,10 +1,10 @@
 #include "UserInterface.h"
 #include <iostream>
 
-std::variant<int, double, char, std::string> luis_ui::GetInput(std::string_view prompt, OutputType output_type, bool newline_input)
+UserInputType luis_ui::GetInput(InputParameters input_params)
 {
-    std::cout << prompt;
-    if (newline_input)
+    std::cout << input_params.prompt;
+    if (input_params.read_on_new_line)
     {
         std::cout << "\n"
                   << "> ";
@@ -13,7 +13,7 @@ std::variant<int, double, char, std::string> luis_ui::GetInput(std::string_view 
     std::string user_response;
     std::getline(std::cin, user_response);
 
-    switch (output_type)
+    switch (input_params.output_type)
     {
         case OutputType::kInt:
         {
