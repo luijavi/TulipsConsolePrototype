@@ -39,5 +39,5 @@ namespace luis_gui
 		std::optional<std::variant<std::monostate, double, int>> max_value;
 	};
 
-	UserInputType GetInput(const InputParameters& input_params);
+	UserInputType GetInput(InputParameters& input_params);
 }

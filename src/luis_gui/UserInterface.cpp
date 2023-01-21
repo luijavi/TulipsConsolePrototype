@@ -4,13 +4,18 @@
 
 bool IsExit(const std::string& response);
 
-bool ValidateResponse(const luis_gui::InputParameters& input_params, std::string user_response)
+bool ValidateResponse(luis_gui::InputParameters& input_params, const std::string& user_response)
 {
     bool is_response_valid = false;
     switch (input_params.output_type)
     {
         case luis_gui::OutputType::kInt:
         {
+            if (IsExit(user_response))
+            {
+                input_params.output_type = luis_gui::OutputType::kChar;
+                ValidateResponse(input_params, user_response);
+            }
             is_response_valid = std::stoi(user_response) >= input_params.min_value.value().index()
                 && std::stoi(user_response) <= input_params.max_value.value().index();
         } break;
@@ -32,7 +37,12 @@ bool ValidateResponse(const luis_gui::InputParameters& input_params, std::string
             {
                 break;
             }
-        }
+            else
+            {
+                is_response_valid = true;
+            }
+
+        } break;
 
         case luis_gui::OutputType::kString:
         {
@@ -61,7 +71,7 @@ void PromptUser(std::string prompt, bool new_line_input)
     }
 }
 
-luis_gui::UserInputType luis_gui::GetInput(const InputParameters& input_params)
+luis_gui::UserInputType luis_gui::GetInput(InputParameters& input_params)
 {
     PromptUser(input_params.prompt, input_params.new_line_input);
 
@@ -92,11 +102,6 @@ luis_gui::UserInputType luis_gui::GetInput(const InputParameters& input_params)
     {
         case OutputType::kInt:
         {
-            if (IsExit(user_response))
-            {
-                return user_response[0];
-            }
-
             return std::stoi(user_response);
         } break;
 
