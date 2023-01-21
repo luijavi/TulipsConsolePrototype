@@ -2,18 +2,18 @@
 #include <iostream>
 #include <algorithm>
 
-bool ValidateResponse(const InputParameters& input_params, std::string user_response)
+bool ValidateResponse(const luis_gui::InputParameters& input_params, std::string user_response)
 {
     bool is_response_valid = false;
     switch (input_params.output_type)
     {
-        case OutputType::kInt:
+        case luis_gui::OutputType::kInt:
         {
             is_response_valid = std::stoi(user_response) >= input_params.min_value.value().index()
                 && std::stoi(user_response) <= input_params.max_value.value().index();
         } break;
 
-        case OutputType::kReal:
+        case luis_gui::OutputType::kReal:
         {
             is_response_valid = std::stod(user_response) >= input_params.min_value.value().index()
                 && std::stod(user_response) <= input_params.max_value.value().index();
@@ -24,7 +24,7 @@ bool ValidateResponse(const InputParameters& input_params, std::string user_resp
         // even if 1 character was entered, we need to make sure that it's a valid response against
         // the list of valid responses provided by user.
         // TODO: May have to check for special characters
-        case OutputType::kChar:
+        case luis_gui::OutputType::kChar:
         {
             if (user_response.empty() || user_response.length() > 1)
             {
@@ -32,7 +32,7 @@ bool ValidateResponse(const InputParameters& input_params, std::string user_resp
             }
         }
 
-        case OutputType::kString:
+        case luis_gui::OutputType::kString:
         {
             if (user_response.empty())
             {
@@ -59,7 +59,7 @@ void PromptUser(std::string prompt, bool new_line_input)
     }
 }
 
-UserInputType luis_gui::GetInput(const InputParameters& input_params)
+luis_gui::UserInputType luis_gui::GetInput(const InputParameters& input_params)
 {
     PromptUser(input_params.prompt, input_params.new_line_input);
 
