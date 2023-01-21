@@ -59,7 +59,7 @@ void PromptUser(std::string prompt, bool new_line_input)
     }
 }
 
-UserInputType luis_ui::GetInput(const InputParameters& input_params)
+UserInputType luis_gui::GetInput(const InputParameters& input_params)
 {
     PromptUser(input_params.prompt, input_params.new_line_input);
 

@@ -35,7 +35,7 @@ struct InputParameters
 	std::optional<std::variant<std::monostate, double, int>> max_value;
 };
 
-namespace luis_ui
+namespace luis_gui
 {
 	UserInputType GetInput(const InputParameters& input_params);
 }
