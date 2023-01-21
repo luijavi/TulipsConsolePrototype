@@ -2,6 +2,8 @@
 #include <iostream>
 #include <algorithm>
 
+bool IsExit(const std::string& response);
+
 bool ValidateResponse(const luis_gui::InputParameters& input_params, std::string user_response)
 {
     bool is_response_valid = false;
@@ -90,6 +92,11 @@ luis_gui::UserInputType luis_gui::GetInput(const InputParameters& input_params)
     {
         case OutputType::kInt:
         {
+            if (IsExit(user_response))
+            {
+                return user_response[0];
+            }
+
             return std::stoi(user_response);
         } break;
 
@@ -108,4 +115,9 @@ luis_gui::UserInputType luis_gui::GetInput(const InputParameters& input_params)
             return user_response;
         } break;
     }
+}
+
+bool IsExit(const std::string& response)
+{
+    return ((response.length() == 1) && std::isalpha(response[0]) && (std::tolower(response[0]) == 'e'));
 }

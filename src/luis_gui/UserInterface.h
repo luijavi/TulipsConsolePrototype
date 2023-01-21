@@ -30,6 +30,8 @@ namespace luis_gui
 		OutputType output_type = OutputType::kString;
 		bool new_line_input = false;
 		bool validate_input = true;
+		bool prompt_exit = false;
+		char exit_choice = 'e';
 		std::string prompt;
 		std::string invalid_input_message;
 		std::optional<std::vector<UserInputType>> valid_responses;
