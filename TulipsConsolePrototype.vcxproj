@@ -87,7 +87,6 @@
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\RandomEncounter.cpp" />
-    <ClCompile Include="src\luis_gui\UserInterface.cpp" />
     <ClCompile Include="src\luis_fmt\Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -95,7 +94,6 @@
     <ClInclude Include="src\Flower.h" />
     <ClInclude Include="src\RandomEncounter.h" />
     <ClInclude Include="src\Resource.h" />
-    <ClInclude Include="src\luis_gui\UserInterface.h" />
     <ClInclude Include="src\luis_fmt\Utility.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Menu.h" />
