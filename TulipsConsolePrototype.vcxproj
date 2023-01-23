@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\City.h" />
+    <ClInclude Include="src\EventHandler.h" />
     <ClInclude Include="src\Flower.h" />
     <ClInclude Include="src\RandomEncounter.h" />
     <ClInclude Include="src\Resource.h" />
