@@ -49,4 +49,21 @@ namespace luis_math
 			return std::numeric_limits<T>::max());
 		}
 	}
+
+	// Prevent stack underflow in subtraction operations
+	template<typename T>
+	T sub_without_underflow(const T& base_value, const T& adjustment_amount)
+	{
+
+		if ((base_value - adjustment_amount) > std::numeric_limits<T>::min())
+		{
+			return base_value - adjustment_amount;
+		}
+		else
+		{
+			// If the subtraction result results in underflow, then only return
+			// the min numeric value
+			return std::numeric_limits<T>::min());
+		}
+	}
 }
