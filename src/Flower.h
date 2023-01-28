@@ -56,6 +56,8 @@ public:
 
 	void LowerQuantity(int quantity);
 	void IncreaseQuantity(int quantity);
+	void IncreasePrice(double amount);
+	void LowerPrice(double amount);
 private:
 	std::string m_name;
 	Rarity m_rarity;

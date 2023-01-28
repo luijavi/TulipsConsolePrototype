@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include "Flower.h"
+#include "luis_fmt/Utility.h"
 
 Flower::Flower()
 	:
@@ -95,6 +96,18 @@ void Flower::IncreaseQuantity(int quantity)
 {
 	assert(quantity > 0);
 	m_quantity += quantity;
+}
+
+void Flower::IncreasePrice(double amount)
+{
+	assert(amount > 0);
+	m_buy_price = luis_math::add_without_overflow(m_buy_price, amount);
+}
+
+void Flower::LowerPrice(double amount)
+{
+	assert(amount < m_buy_price);
+	m_buy_price = luis_math::sub_without_underflow(m_buy_price, amount);
 }
 
 
