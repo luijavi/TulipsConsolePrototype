@@ -1,7 +1,9 @@
  #pragma once
 
 #include <string>
-#include <vector>
+#include <optional>
+#include <functional>
+#include <map>
 
 enum class EncounterTrigger { kNextDay, kFlyAway, kBoth };
 
@@ -12,6 +14,5 @@ public:
 private:
 	EncounterTrigger m_turn_type;
 	unsigned short m_probability;
-	std::vector<std::string> m_effects;
 	std::string m_text;
 };
