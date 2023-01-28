@@ -46,7 +46,7 @@ namespace luis_math
 		{
 			// If the addition result results in overflow, then only return
 			// the max numeric value
-			return std::numeric_limits<T>::max());
+			return std::numeric_limits<T>::max();
 		}
 	}
 
@@ -63,7 +63,7 @@ namespace luis_math
 		{
 			// If the subtraction result results in underflow, then only return
 			// the min numeric value
-			return std::numeric_limits<T>::min());
+			return std::numeric_limits<T>::min();
 		}
 	}
 }
