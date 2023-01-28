@@ -31,6 +31,7 @@ public:
 	const double GetCash() const;
 
 	void AddFlower(const class Flower& flower, int quantity);
+	void RemoveFlower(const class Flower& flower, int quantity);
 
 	void OpenInventory();
 private:

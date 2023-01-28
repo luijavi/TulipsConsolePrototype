@@ -95,6 +95,39 @@ void Player::AddFlower(const Flower& flower, int quantity)
 	m_flowers.at(flower.GetName()).IncreaseQuantity(quantity);
 }
 
+void Player::RemoveFlower(const Flower& flower, int quantity)
+{	
+	if (m_flowers.find(flower.GetName()) != m_flowers.end())
+	{
+		// Create reference to the flower being acted on to make the rest of this code
+		// easier to read.
+		Flower& temp_flower = m_flowers.find(flower.GetName())->second;
+
+		// First, make sure that the quantity in the argument is valid
+		if (quantity > temp_flower.GetQuantity())
+		{
+			std::cout << "\nInvalid call! Quantity argument is greater than current flower quantity!\n";
+		}
+		// If the quantity being removed is the entirety of the specified
+		// flower in the inventory, then just erase it from the map and
+		// not just have it as zero. 
+		else if (quantity == temp_flower.GetQuantity())
+		{
+			m_flowers.erase(flower.GetName());
+		}
+		else
+		{
+			temp_flower.LowerQuantity(quantity);
+		}
+	}
+	else
+	{
+		// If player doesn't have the flower, then print an error.
+		// TODO: This type of error handling might be too messy. Might have to adjust?
+		std::cerr << "\nWarning! " << flower.GetName() << " not found! No changes made.\n";
+	}
+}
+
 void Player::OpenInventory()
 {
 	int i = 1;
