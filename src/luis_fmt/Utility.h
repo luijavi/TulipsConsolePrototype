@@ -4,6 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include <cmath>
+#include <limits>
 
 namespace luis_fmt
 {
@@ -28,4 +29,24 @@ namespace luis_fmt
 namespace luis_math
 {
 	double round(double value, double precision = 1.0);
+
+	// Prevent stack overflow - though given the nature of the game,
+	// I may have to just ensure that the numeric type is increased
+	// to hold bigger numbers.
+	// Source: https://stackoverflow.com/a/3041689
+	template<typename T>
+	T add_without_overflow(T& base_value, T& adjustment_amount)
+	{
+
+		if ((base_value + adjustment_amount) < std::numeric_limits<T>::max())
+		{
+			return base_value + adjustment_amount;
+		}
+		else
+		{
+			// If the addition result results in overflow, then only return
+			// the max numeric value
+			return std::numeric_limits<T>::max());
+		}
+	}
 }
