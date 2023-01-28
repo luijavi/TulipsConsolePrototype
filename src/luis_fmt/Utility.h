@@ -35,7 +35,7 @@ namespace luis_math
 	// to hold bigger numbers.
 	// Source: https://stackoverflow.com/a/3041689
 	template<typename T>
-	T add_without_overflow(T& base_value, T& adjustment_amount)
+	T add_without_overflow(const T& base_value, const T& adjustment_amount)
 	{
 
 		if ((base_value + adjustment_amount) < std::numeric_limits<T>::max())
