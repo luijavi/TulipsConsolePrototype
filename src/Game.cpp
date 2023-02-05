@@ -46,8 +46,8 @@ void Game::InitNewGame()
 
 	// Init city and player
 	m_current_city = m_cities.find(kStartingCity)->second;
-	m_player.IncreaseCash(KStartingCash);
-	m_player.IncreaseHealth(kStartingHealth);
+	m_player.SetCash(KStartingCash);
+	m_player.SetHealth(kStartingHealth);
 
 	std::cout << "Your cash account has gone up by ";
 
