@@ -40,6 +40,7 @@ RandomEncounter::RandomEncounter(std::string_view encounter_data)
 	m_probability = std::stoi(probability);
 }
 
+// TODO: Maybe this will have to be removed if it's not actually being used.
 RandomEncounter::RandomEncounter(EncounterTrigger trigger, std::string_view encounter_text, ImpactedEntity impacted_entity, unsigned short probability)
 	:
 	m_encounter_trigger(trigger),
