@@ -29,6 +29,8 @@ public:
 
 	const double GetHealth() const;
 	const double GetCash() const;
+	void SetHealth(int amount);
+	void SetCash(double amount);
 
 	void AddFlower(const class Flower& flower, int quantity);
 	void RemoveFlower(const class Flower& flower, int quantity);

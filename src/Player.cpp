@@ -3,6 +3,7 @@
 #include "luis_fmt/Utility.h"
 #include <iostream>
 #include <iomanip>
+#include <cassert>
 
 Player::Player()
 	:
@@ -81,6 +82,18 @@ const double Player::GetHealth() const
 const double Player::GetCash() const
 {
 	return m_cash;
+}
+
+void Player::SetHealth(int amount)
+{
+	assert(amount > 0);
+	m_health = amount;
+}
+
+void Player::SetCash(double amount)
+{
+	assert(amount > 0.0);
+	m_cash = amount;
 }
 
 void Player::AddFlower(const Flower& flower, int quantity)
