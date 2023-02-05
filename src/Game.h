@@ -58,6 +58,8 @@ private:
 	void ResetGame();
 	bool ConfirmQuit();
 private:
+	EventHandler m_event_handler;
+
 	static constexpr int kStartingHealth = 100;
 	static constexpr double KStartingCash = 5000.0;
 	const std::string kStartingCity = "Chicago";
@@ -69,7 +71,7 @@ private:
 	std::map<std::string, City*> m_cities;
 	City* m_current_city;
 
-	std::map<std::string, class Flower> m_flowers;
+	std::map<std::string, Flower> m_flowers;
 
 
 	bool m_has_quit;
