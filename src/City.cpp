@@ -49,7 +49,7 @@ void City::OpenMarket(Player& player)
 	int i = 1;
 	std::cout << "MARKET\n"
 			  << "======================================================================\n"
-			  << "FLOWER               QUANTITY               BUY               SELL\n"
+			  << "FLOWER               QUANTITY               BUY                   \n"
 			  << "======================================================================\n";
 	int padding1 = 19;
 
@@ -62,8 +62,7 @@ void City::OpenMarket(Player& player)
 
 		std::cout << std::left << i << ". " << std::setw(padding1) << f->GetName()
 				  << std::right << std::setw(6) << f->GetQuantity()
-				  << std::setw(20) << luis_fmt::to_cash(f->GetBuyPrice()) 
-				  << std::setw(20) << luis_fmt::to_cash(f->GetSellPrice()) << "\n";
+				  << std::setw(20) << luis_fmt::to_cash(f->GetBuyPrice()) << "\n";
 		++i;
 	}
 
