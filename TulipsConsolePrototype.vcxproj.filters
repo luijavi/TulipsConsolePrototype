@@ -27,7 +27,7 @@
     <ClCompile Include="src\City.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Menu.cpp">
+    <ClCompile Include="src\Menu_UNUSED.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\RandomEncounter.cpp">
@@ -50,7 +50,7 @@
     <ClInclude Include="src\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Menu.h">
+    <ClInclude Include="src\Menu_UNUSED.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\luis_fmt\Utility.h">
@@ -65,7 +65,7 @@
     <ClInclude Include="src\Flower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Resource.h">
+    <ClInclude Include="src\Resource_UNUSED.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\EventHandler.h">

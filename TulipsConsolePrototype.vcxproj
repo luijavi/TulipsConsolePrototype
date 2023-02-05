@@ -85,7 +85,7 @@
     <ClCompile Include="src\Flower.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\Menu.cpp" />
+    <ClCompile Include="src\Menu_UNUSED.cpp" />
     <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\RandomEncounter.cpp" />
     <ClCompile Include="src\luis_fmt\Utility.cpp" />
@@ -95,10 +95,10 @@
     <ClInclude Include="src\EventHandler.h" />
     <ClInclude Include="src\Flower.h" />
     <ClInclude Include="src\RandomEncounter.h" />
-    <ClInclude Include="src\Resource.h" />
+    <ClInclude Include="src\Resource_UNUSED.h" />
     <ClInclude Include="src\luis_fmt\Utility.h" />
     <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\Menu.h" />
+    <ClInclude Include="src\Menu_UNUSED.h" />
     <ClInclude Include="src\Player.h" />
   </ItemGroup>
   <ItemGroup>
