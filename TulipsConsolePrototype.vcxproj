@@ -81,6 +81,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\City.cpp" />
+    <ClCompile Include="src\EventHandler.cpp" />
     <ClCompile Include="src\Flower.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />

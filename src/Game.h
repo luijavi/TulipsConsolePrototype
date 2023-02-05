@@ -7,7 +7,8 @@
 
 #include "Player.h"
 #include "City.h"
-#include "RandomEncounter.h"
+#include "Flower.h"
+#include "EventHandler.h"
 
 enum class MainMenuOptions
 {
@@ -64,8 +65,6 @@ private:
 	Player m_player;
 
 	std::map<Rarity, RarityValues> m_rarity_values;
-
-	std::list<RandomEncounter> m_encounters;
 
 	std::map<std::string, City*> m_cities;
 	City* m_current_city;
