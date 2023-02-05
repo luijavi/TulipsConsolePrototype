@@ -12,3 +12,5 @@ TODO:
 
 
     * Add game states to better manage flow of the game??
+
+    * Implement selling functionality
