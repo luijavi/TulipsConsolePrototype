@@ -32,6 +32,8 @@ struct QuantityRange
 
 class Flower
 {
+private:
+	friend class Market;
 public:
 	// TODO: Create parameterized constructors and maybe get rid of all these setters
 	Flower();
@@ -65,8 +67,12 @@ private:
 	Hotness m_hotness;
 	double m_buy_price;
 	double m_sell_price;
-	int m_quantity;	// TODO: Quantity should probably not be in Flower class
-	std::set<std::string> m_cities;
+	
+	// TODO: Quantity should probably not be in Flower class
+	int m_quantity;	
+
+	// TODO: This may have to be moved out of the Flower and just live in the Market class
+	std::set<std::string> m_cities;		
 };
 
 
