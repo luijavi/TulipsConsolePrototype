@@ -215,6 +215,8 @@ void Game::LoadRandomEncounters()
 				
 			}
 		}
+
+		file.close();
 	}
 }
 
