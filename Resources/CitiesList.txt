@@ -1,12 +1,12 @@
-$city|country|syndicate|background|
-Amsterdam|Netherlands|Dutch Iris Trading Company|amsterdam.png
-Buenos Aires|Argentina|South American Cartel|buenos_aires.png
-Cape Town|South Africa|Dutch Iris Trading Company|cape_town.png
-Chicago|USA|North American Flower Trade Arbitrageurs|chicago.png
-Los Angeles|USA|North American Flower Trade Arbitrageurs|los_angeles.png
-Mexico City|Mexico|North American Flower Trade Arbitrageurs|mexico_city.png
-Mumbai|India|Russian Mafia|mumbai.png
-New York City|USA|North American Flower Trade Arbitrageurs|new_york_city.png
-Rio de Janeiro|Brazil|South American Cartel|rio_de_janeiro.png
-Saint Petersburg|Russia|Russian Mafia|saint_petersburg.png
-Shanghai|China|Russian Mafia|shanghai.png
+$city|country|syndicate|background|flower
+Amsterdam|Netherlands|Dutch Iris Trading Company|amsterdam.png|Bleeding-heart#Crocus#Daffodil#Daisie#Delphinium#Desert sunflower#Frangipani#Gardenia#Geranium#Hibiscus#Hydrangea#Lavender#Tulip
+Buenos Aires|Argentina|South American Cartel|buenos_aires.png|Ceibo#Daffodil#Daisie#Delphinium#Desert sunflower#Frangipani#Gardenia#Geranium#Hibiscus#Hydrangea#Tiger flower
+Cape Town|South Africa|Dutch Iris Trading Company|cape_town.png|Crocus#Daffodil#Daisie#Delphinium#Desert sunflower#Frangipani#Gardenia#Geranium#Hibiscus#Hydrangea#King protea#Lavender
+Chicago|USA|North American Flower Trade Arbitrageurs|chicago.png|Common blue violet#Daffodil#Daisie#Delphinium#Desert sunflower#Frangipani#Gardenia#Geranium#Hibiscus#Hydrangea#Peony#Rose
+Los Angeles|USA|North American Flower Trade Arbitrageurs|los_angeles.png|California poppy#Daffodil#Daisie#Delphinium#Desert sunflower#Frangipani#Gardenia#Geranium#Hibiscus#Hydrangea#Koki'o flower#Saguaro flower#Texas bluebonnet#Tiger flower
+Mexico City|Mexico|North American Flower Trade Arbitrageurs|mexico_city.png|Daffodil#Dahlia#Daisie#Delphinium#Desert sunflower#Frangipani#Gardenia#Geranium#Hibiscus#Hydrangea#Tiger flower
+Mumbai|India|Russian Mafia|mumbai.png|Bleeding-heart#Cherry blossom#Daffodil#Daisie#Delphinium#Desert sunflower#Frangipani#Gardenia#Geranium#Hibiscus#Hydrangea#Jasmine#Lavender#Lotus
+New York City|USA|North American Flower Trade Arbitrageurs|new_york_city.png|Daffodil#Daisie#Delphinium#Desert sunflower#Frangipani#Gardenia#Geranium#Hibiscus#Hydrangea#Koki'o flower
+Rio de Janeiro|Brazil|South American Cartel|rio_de_janeiro.png|Azalea#Cattleya orchid#Daffodil#Daisie#Delphinium#Desert sunflower#Frangipani#Gardenia#Geranium#Hibiscus#Hydrangea#Tiger flower
+Saint Petersburg|Russia|Russian Mafia|saint_petersburg.png|Azalea#Cherry blossom#Crocus#Daffodil#Daisie#Delphinium#Desert sunflower#Frangipani#Gardenia#Geranium#Hibiscus#Hydrangea#Rose
+Shanghai|China|Russian Mafia|shanghai.png|Azalea#Bleeding-heart#Cherry blossom#Crocus#Daffodil#Daisie#Delphinium#Desert sunflower#Frangipani#Gardenia#Geranium#Hibiscus#Hydrangea#Plum blossoms
