@@ -19,7 +19,7 @@ public:
 	std::string GetName() const;
 	std::string GetNameAndCountry() const;
 
-	void AddFlower(class Flower* flower);
+	void AddFlower(Flower* flower);
 	void OpenMarket(Player& player);
 	void UpdateMarketPrices(const std::map<enum class Rarity, RarityValues>& rarity_values);
 private:
@@ -31,5 +31,5 @@ private:
 	std::string m_syndicate;
 	std::string m_texture_filename;
 
-	std::vector<class Flower*> m_flowers;
+	std::vector<Flower*> m_flowers;
 };
