@@ -33,7 +33,7 @@
     <ClCompile Include="src\RandomEncounter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\luis_fmt\Utility.cpp">
+    <ClCompile Include="src\luis_utility\Utility.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Flower.cpp">
@@ -56,7 +56,7 @@
     <ClInclude Include="src\Menu_UNUSED.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\luis_fmt\Utility.h">
+    <ClInclude Include="src\luis_utility\Utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\City.h">

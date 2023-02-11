@@ -14,3 +14,6 @@ TODO:
     * Add game states to better manage flow of the game??
 
     * Implement selling functionality
+
+    * Consider streamlining the text file loading by counting number of '|' in a line
+      and creating a vector of strings for each column (as opposed to creating a string for each line)

@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <random>
 
-#include "luis_fmt/Utility.h"
+#include "luis_utility/Utility.h"
 #include "City.h"
 #include "Flower.h"
 #include "Player.h"
@@ -17,6 +17,10 @@ City::City(const std::string& city_data)
 	std::getline(iss, m_country, delim);
 	std::getline(iss, m_syndicate, delim);
 	std::getline(iss, m_texture_filename, delim);
+
+	// TODO: This may have to be moved elsewhere, since it's unused currently
+	std::string flowers;
+	std::getline(iss, flowers, delim);
 }
 
 City::City(std::string name, std::string country)
