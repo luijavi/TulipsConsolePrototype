@@ -6,6 +6,11 @@
 #include <cmath>
 #include <limits>
 
+namespace luis_utility
+{
+	int count_character(std::string_view source_string, char character_to_count);
+}
+
 namespace luis_fmt
 {
 	std::string to_cash(double amount);

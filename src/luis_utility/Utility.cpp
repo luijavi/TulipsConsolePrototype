@@ -21,3 +21,18 @@ namespace luis_math
 		return std::round(value / precision) * precision;
 	}
 }
+
+int luis_utility::count_character(std::string_view source_string, char character_to_count)
+{
+	int count = 0;
+
+	for (auto s : source_string)
+	{
+		if (s == character_to_count)
+		{
+			++count;
+		}
+	}
+
+	return count;
+}
