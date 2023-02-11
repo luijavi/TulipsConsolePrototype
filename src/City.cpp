@@ -8,9 +8,9 @@
 #include "Flower.h"
 #include "Player.h"
 
-City::City(const std::string& city_data)
+City::City(std::string_view city_data)
 {
-	std::istringstream iss(city_data);
+	std::istringstream iss(std::string(city_data), std::ios::in);
 	constexpr char delim = '|';
 
 	std::getline(iss, m_name, delim);
@@ -21,6 +21,9 @@ City::City(const std::string& city_data)
 	// TODO: This may have to be moved elsewhere, since it's unused currently
 	std::string flowers;
 	std::getline(iss, flowers, delim);
+	std::istringstream flowers_iss(flowers);
+
+
 }
 
 City::City(std::string name, std::string country)
@@ -193,5 +196,17 @@ void City::GetInput(Player& player, int num_choices)
 		{
 			std::cout << "\nInvalid response!\n";
 		}
+	}
+}
+
+void City::AddFlowers(std::istringstream flowers)
+{
+	static constexpr char delim = '#';
+
+	while (!flowers.eof())
+	{
+		std::string flower;
+		std::getline(flowers, flower, delim);
+		m_flowers.push_back(flower);
 	}
 }

@@ -11,9 +11,11 @@ struct RarityValues;
 
 class City
 {
+private:
+	friend class Market;
 public:
 	City() = default;
-	City(const std::string& city_data);
+	City(std::string_view city_data);
 	City(std::string name, std::string country);
 
 	std::string GetName() const;
@@ -25,11 +27,12 @@ public:
 private:
 	bool ProcessMarketEvent(Player& player, int choice);
 	void GetInput(Player& player, int num_choices);
+	void AddFlowers(std::istringstream flowers);
 private:
 	std::string m_name;
 	std::string m_country;
 	std::string m_syndicate;
 	std::string m_texture_filename;
 
-	std::vector<Flower*> m_flowers;
+	std::vector<std::string> m_flowers;
 };
