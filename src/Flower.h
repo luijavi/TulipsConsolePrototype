@@ -18,17 +18,17 @@ enum class Rarity
 	kUnique
 };
 
-struct PriceRange
-{
-	double min_price;
-	double max_price;
-};
-
-struct QuantityRange
-{
-	int min_quantity;
-	int max_quantity;
-};
+//struct PriceRange
+//{
+//	double min_price;
+//	double max_price;
+//};
+//
+//struct QuantityRange
+//{
+//	int min_quantity;
+//	int max_quantity;
+//};
 
 class Flower
 {
