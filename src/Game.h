@@ -4,11 +4,13 @@
 #include <string>
 #include <list>
 #include <set>
+#include <random>
 
 #include "Player.h"
 #include "City.h"
 #include "Flower.h"
 #include "EventHandler.h"
+#include "Market.h"
 
 enum class MainMenuOptions
 {
@@ -59,6 +61,10 @@ private:
 	bool ConfirmQuit();
 private:
 	EventHandler m_event_handler;
+	std::random_device m_rd;
+	std::mt19937_64 m_engine;
+
+	Market m_market;
 
 	static constexpr int kStartingHealth = 100;
 	static constexpr double KStartingCash = 5000.0;

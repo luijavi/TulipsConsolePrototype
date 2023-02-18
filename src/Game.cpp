@@ -1,14 +1,14 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include <random>
 
 #include "luis_utility/Utility.h"
 #include "Game.h"
 
-
 Game::Game()
 	:
+	m_engine(m_rd()),
+	m_market(m_engine),
 	m_has_quit(false),
 	m_day_num(0),
 	m_current_city(nullptr)
