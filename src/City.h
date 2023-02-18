@@ -21,7 +21,7 @@ public:
 	std::string GetName() const;
 	std::string GetNameAndCountry() const;
 
-	void AddFlower(Flower* flower);
+	void AddFlower(std::string_view flower_name);
 	void OpenMarket(Player& player);
 	void UpdateMarketPrices(const std::map<enum class Rarity, RarityValues>& rarity_values);
 private:
