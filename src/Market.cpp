@@ -24,7 +24,7 @@ void Market::Update()
 	{
 		for (auto& flower_map : city_map.second)
 		{
-			UpdateFlowerMarketData(flower_map.second);
+			RandomizeFlowerMarketData(flower_map.second);
 		}
 	}
 }
@@ -103,7 +103,7 @@ void Market::InitFlowerMarket()
 			for (auto f : c.m_flowers)
 			{
 				Flower flower = flower_map.find(f)->second;
-				UpdateFlowerMarketData(flower);
+				RandomizeFlowerMarketData(flower);
 				city_flowers.emplace(flower.GetName(), flower);
 			}
 
@@ -161,13 +161,13 @@ void Market::InitRarityMap()
 	}
 }
 
-void Market::UpdateFlowerMarketData(Flower& flower)
+void Market::RandomizeFlowerMarketData(Flower& flower)
 {
-	UpdateFlowerPrice(flower);
-	UpdateFlowerQuantity(flower);
+	RandomizeFlowerPrice(flower);
+	RandomizeFlowerQuantity(flower);
 }
 
-void Market::UpdateFlowerPrice(Flower& flower)
+void Market::RandomizeFlowerPrice(Flower& flower)
 {
 	auto min_price = m_rarity_map.find(flower.GetRarity())->second.min_price;
 	auto max_price = m_rarity_map.find(flower.GetRarity())->second.max_price;
@@ -177,7 +177,7 @@ void Market::UpdateFlowerPrice(Flower& flower)
 	flower.SetBuyPrice(buy_price);
 }
 
-void Market::UpdateFlowerQuantity(Flower& flower)
+void Market::RandomizeFlowerQuantity(Flower& flower)
 {
 	auto min_quantity = m_rarity_map.find(flower.GetRarity())->second.min_quantity;
 	auto max_quantity = m_rarity_map.find(flower.GetRarity())->second.max_quantity;
