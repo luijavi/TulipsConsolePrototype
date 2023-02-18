@@ -4,19 +4,21 @@
 #include <string_view>
 #include <set>
 
+#include "Rarity.h"
+
 // Typedefs for flower stats
 typedef unsigned short Longevity;
 typedef unsigned short Hotness;
 
-enum class Rarity
-{
-	kCommon = 1,
-	kUncommon,
-	kRare,
-	kLegendary,
-	kMythic,
-	kUnique
-};
+//enum class Rarity
+//{
+//	kCommon = 1,
+//	kUncommon,
+//	kRare,
+//	kLegendary,
+//	kMythic,
+//	kUnique
+//};
 
 //struct PriceRange
 //{
@@ -77,11 +79,11 @@ private:
 
 
 // Used to set the price and quantities at market
-struct RarityValues
-{
-	Rarity rarity_key;
-	double min_price;
-	double max_price;
-	int min_quantity;
-	int max_quantity;
-};
+//struct RarityValues
+//{
+//	Rarity rarity_key;
+//	double min_price;
+//	double max_price;
+//	int min_quantity;
+//	int max_quantity;
+//};
