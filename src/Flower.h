@@ -35,7 +35,7 @@ typedef unsigned short Hotness;
 class Flower
 {
 private:
-	friend class Market;
+//	friend class Market;
 public:
 	// TODO: Create parameterized constructors and maybe get rid of all these setters
 	Flower();
