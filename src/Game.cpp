@@ -52,7 +52,7 @@ void Game::InitNewGame()
 	std::cout << "Your cash account has gone up by ";
 
 	std::cout << luis_fmt::to_cash(m_player.GetCash()) << "\n\n";
-
+	m_market.Update();
 	m_current_city->UpdateMarketPrices(m_rarity_values);
 
 	++m_day_num;
