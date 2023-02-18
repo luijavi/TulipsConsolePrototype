@@ -97,6 +97,7 @@
     <ClInclude Include="src\Flower.h" />
     <ClInclude Include="src\Market.h" />
     <ClInclude Include="src\RandomEncounter.h" />
+    <ClInclude Include="src\Rarity.h" />
     <ClInclude Include="src\Resource_UNUSED.h" />
     <ClInclude Include="src\luis_utility\Utility.h" />
     <ClInclude Include="src\Game.h" />

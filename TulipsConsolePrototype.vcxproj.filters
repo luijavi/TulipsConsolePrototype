@@ -77,6 +77,9 @@
     <ClInclude Include="src\Market.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Rarity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\CitiesList.txt">

@@ -2,20 +2,26 @@
 
 #include <map>
 #include <string>
+#include <random>
 
-#include "Flower.h"
+#include "Rarity.h"
 
 class Market
 {
 private:
 	// Map of Cities with their respective flowers, as well as the market data for the flowers
-	typedef std::map<std::string, std::map<std::string, Flower>> FlowerMarket;
+	typedef std::map<std::string, std::map<std::string, class Flower>> FlowerMarket;
 
 	
 
 public:
 	Market();
+
+	void Update(std::mt19937_64& random_engine);
+private:
 	void InitFlowerMarket();
+	void InitRarityMap();
 private:
 	static FlowerMarket m_flower_market;
+	static std::map<Rarity, RarityValues> m_rarity_map;
 };
