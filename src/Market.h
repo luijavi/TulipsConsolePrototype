@@ -15,11 +15,11 @@ private:
 	
 
 public:
-	Market();
+	Market(std::mt19937_64& random_engine);
 
 	void Update(std::mt19937_64& random_engine);
 private:
-	void InitFlowerMarket();
+	void InitFlowerMarket(std::mt19937_64& random_engine);
 	void InitRarityMap();
 private:
 	static FlowerMarket m_flower_market;

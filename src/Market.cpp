@@ -9,9 +9,9 @@
 #include <sstream>
 #include <vector>
 
-Market::Market()
+Market::Market(std::mt19937_64& random_engine)
 {
-	InitFlowerMarket();
+	InitFlowerMarket(random_engine);
 }
 
 //TODO: Might have to also pass the random_device to this function
@@ -39,7 +39,7 @@ void Market::Update(std::mt19937_64& random_engine)
 	}
 }
 
-void Market::InitFlowerMarket()
+void Market::InitFlowerMarket(std::mt19937_64& random_engine)
 {
 	std::string flower_filename{ "Resources\\FlowersList.txt" };
 	std::ifstream flower_file{ flower_filename, std::ios::in };
