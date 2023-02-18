@@ -13,6 +13,7 @@ Market::Market(std::mt19937_64& random_engine)
 	:
 	m_engine(random_engine)
 {
+	InitRarityMap();
 	InitFlowerMarket();
 }
 
@@ -23,20 +24,7 @@ void Market::Update()
 	{
 		for (auto& flower_map : city_map.second)
 		{
-			Flower& f = flower_map.second;
-
-			auto min_quantity = m_rarity_map.find(f.GetRarity())->second.min_quantity;
-			auto max_quantity = m_rarity_map.find(f.GetRarity())->second.max_quantity;
-			auto min_price = m_rarity_map.find(f.GetRarity())->second.min_price;
-			auto max_price = m_rarity_map.find(f.GetRarity())->second.max_price;
-			std::uniform_int_distribution<int> quantity_range(min_quantity, max_quantity);
-			std::uniform_real_distribution<double> price_range(min_price, max_price);
-
-			int quantity = quantity_range(m_engine);
-			f.SetQuantity(quantity);
-
-			double buy_price = luis_math::round(price_range(m_engine), 0.01);
-			f.SetBuyPrice(buy_price);
+			UpdateFlowerMarketData(flower_map.second);
 		}
 	}
 }
@@ -70,6 +58,8 @@ void Market::InitFlowerMarket()
 
 			Flower f(flower_data);
 			
+
+
 			flower_map.emplace(f.GetName(), f);
 		}
 
@@ -113,6 +103,7 @@ void Market::InitFlowerMarket()
 			for (auto f : c.m_flowers)
 			{
 				Flower flower = flower_map.find(f)->second;
+				UpdateFlowerMarketData(flower);
 				city_flowers.emplace(flower.GetName(), flower);
 			}
 
@@ -168,4 +159,29 @@ void Market::InitRarityMap()
 		}
 		file.close();
 	}
+}
+
+void Market::UpdateFlowerMarketData(Flower& flower)
+{
+	UpdateFlowerPrice(flower);
+	UpdateFlowerQuantity(flower);
+}
+
+void Market::UpdateFlowerPrice(Flower& flower)
+{
+	auto min_price = m_rarity_map.find(flower.GetRarity())->second.min_price;
+	auto max_price = m_rarity_map.find(flower.GetRarity())->second.max_price;
+	std::uniform_real_distribution<double> price_range(min_price, max_price);
+
+	double buy_price = luis_math::round(price_range(m_engine), 0.01);
+	flower.SetBuyPrice(buy_price);
+}
+
+void Market::UpdateFlowerQuantity(Flower& flower)
+{
+	auto min_quantity = m_rarity_map.find(flower.GetRarity())->second.min_quantity;
+	auto max_quantity = m_rarity_map.find(flower.GetRarity())->second.max_quantity;
+	std::uniform_int_distribution<int> quantity_range(min_quantity, max_quantity);
+	int quantity = quantity_range(m_engine);
+	flower.SetQuantity(quantity);
 }

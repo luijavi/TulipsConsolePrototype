@@ -21,6 +21,9 @@ public:
 private:
 	void InitFlowerMarket();
 	void InitRarityMap();
+	void UpdateFlowerMarketData(Flower& flower);
+	void UpdateFlowerPrice(Flower& flower);
+	void UpdateFlowerQuantity(Flower& flower);
 private:
 	static FlowerMarket m_flower_market;
 	static std::map<Rarity, RarityValues> m_rarity_map;
