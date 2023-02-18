@@ -10,12 +10,14 @@
 #include <vector>
 
 Market::Market(std::mt19937_64& random_engine)
+	:
+	m_engine(random_engine)
 {
-	InitFlowerMarket(random_engine);
+	InitFlowerMarket();
 }
 
 //TODO: Might have to also pass the random_device to this function
-void Market::Update(std::mt19937_64& random_engine)
+void Market::Update()
 {
 	for (auto& city_map : m_flower_market)
 	{
@@ -30,16 +32,16 @@ void Market::Update(std::mt19937_64& random_engine)
 			std::uniform_int_distribution<int> quantity_range(min_quantity, max_quantity);
 			std::uniform_real_distribution<double> price_range(min_price, max_price);
 
-			int quantity = quantity_range(random_engine);
+			int quantity = quantity_range(m_engine);
 			f.SetQuantity(quantity);
 
-			double buy_price = luis_math::round(price_range(random_engine), 0.01);
+			double buy_price = luis_math::round(price_range(m_engine), 0.01);
 			f.SetBuyPrice(buy_price);
 		}
 	}
 }
 
-void Market::InitFlowerMarket(std::mt19937_64& random_engine)
+void Market::InitFlowerMarket()
 {
 	std::string flower_filename{ "Resources\\FlowersList.txt" };
 	std::ifstream flower_file{ flower_filename, std::ios::in };
