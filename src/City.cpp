@@ -44,9 +44,9 @@ std::string City::GetNameAndCountry() const
 	return s;
 }
 
-void City::AddFlower(Flower* f)
+void City::AddFlower(std::string_view flower_name)
 {
-	m_flowers.push_back(f);
+	m_flowers.emplace_back(flower_name);
 }
 
 void City::OpenMarket(Player& player)
