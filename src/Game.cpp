@@ -220,6 +220,7 @@ void Game::LoadRandomEncounters()
 	}
 }
 
+/*
 // Loads and parses FlowersList.txt file, which is used to fill a Flower object (which is
 // owned by the city objects
 void Game::LoadFlowers()
@@ -293,7 +294,9 @@ void Game::LoadFlowers()
 		file.close();
 	}
 }
+*/
 
+/*
 // Loads and parses RarityValues.txt file, and sets the rarity values for each
 // flower
 void Game::SetRarityValues()
@@ -347,6 +350,7 @@ void Game::SetRarityValues()
 		file.close();
 	}
 }
+*/
 
 void Game::NextDay()
 {
