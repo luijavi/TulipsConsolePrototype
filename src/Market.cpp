@@ -1,6 +1,7 @@
 #include "Market.h"
 #include "Flower.h"
 #include "City.h"
+#include "Player.h"
 #include "luis_utility/Utility.h"
 
 
@@ -27,6 +28,33 @@ void Market::Update()
 			RandomizeFlowerMarketData(flower_map.second);
 		}
 	}
+}
+
+void Market::Open(std::string_view city, Player& player)
+{
+	// TODO: Since the Player class also uses something similar to this, maybe make it its own thing?
+	// (The display of market and inventory, I mean)
+	int i = 1;
+	std::cout << "MARKET\n"
+		<< "======================================================================\n"
+		<< "FLOWER               QUANTITY               BUY                   \n"
+		<< "======================================================================\n";
+	int padding1 = 19;
+
+	for (const auto& f : m_flower_market.find(std::string(city))->second)
+	{
+		if (i > 9)
+		{
+			padding1 = 18;
+		}
+
+		std::cout << std::left << i << ". " << std::setw(padding1) << f.second.GetName()
+			<< std::right << std::setw(6) << f.second.GetQuantity()
+			<< std::setw(20) << luis_fmt::to_cash(f.second.GetBuyPrice()) << "\n";
+		++i;
+	}
+
+	//GetInput(player, i);
 }
 
 void Market::InitFlowerMarket()

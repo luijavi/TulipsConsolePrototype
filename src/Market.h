@@ -18,6 +18,7 @@ public:
 	Market(std::mt19937_64& random_engine);
 
 	void Update();
+	void Open(std::string_view city, class Player& player);
 private:
 	void InitFlowerMarket();
 	void InitRarityMap();
