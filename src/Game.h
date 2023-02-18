@@ -9,6 +9,7 @@
 #include "City.h"
 #include "Flower.h"
 #include "EventHandler.h"
+#include "Market.h"
 
 enum class MainMenuOptions
 {
@@ -58,7 +59,10 @@ private:
 	void ResetGame();
 	bool ConfirmQuit();
 private:
+	// TODO: This isn't being used currently
 	EventHandler m_event_handler;
+
+	static Market m_market;
 
 	static constexpr int kStartingHealth = 100;
 	static constexpr double KStartingCash = 5000.0;
