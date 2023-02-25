@@ -76,28 +76,28 @@ void City::OpenMarket(Player& player)
 	//GetInput(player, i);
 }
 
-void City::UpdateMarketPrices(const std::map<Rarity, RarityValues>& rarity_values)
-{
-	// Create random device on the stack?
-	std::random_device rd;
-	
-	for (auto& f : m_flowers)
-	{
-		// Get the rarity values struct for pricing and quantities
-		RarityValues r = rarity_values.at(f->GetRarity());
-
-		// Randomize prices
-		std::uniform_real_distribution<double> price_range(r.min_price, r.max_price);
-		std::mt19937_64 engine(rd());
-
-		double buy_price = luis_math::round(price_range(engine), 0.01);
-		f->SetBuyPrice(buy_price);
-
-		std::uniform_int_distribution<int> quantity_range(r.min_quantity, r.max_quantity);
-		int quantity = quantity_range(engine);
-		f->SetQuantity(quantity);
-	}
-}
+//void City::UpdateMarketPrices(const std::map<Rarity, RarityValues>& rarity_values)
+//{
+//	// Create random device on the stack?
+//	std::random_device rd;
+//	
+//	for (auto& f : m_flowers)
+//	{
+//		// Get the rarity values struct for pricing and quantities
+//		RarityValues r = rarity_values.at(f->GetRarity());
+//
+//		// Randomize prices
+//		std::uniform_real_distribution<double> price_range(r.min_price, r.max_price);
+//		std::mt19937_64 engine(rd());
+//
+//		double buy_price = luis_math::round(price_range(engine), 0.01);
+//		f->SetBuyPrice(buy_price);
+//
+//		std::uniform_int_distribution<int> quantity_range(r.min_quantity, r.max_quantity);
+//		int quantity = quantity_range(engine);
+//		f->SetQuantity(quantity);
+//	}
+//}
 
 bool City::ProcessMarketEvent(Player& player, int choice)
 {

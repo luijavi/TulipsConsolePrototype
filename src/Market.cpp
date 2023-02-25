@@ -40,6 +40,8 @@ void Market::Open(std::string_view city, Player& player)
 		<< "FLOWER               QUANTITY               BUY                   \n"
 		<< "======================================================================\n";
 	int padding1 = 19;
+	static constexpr int padding2 = 6;
+	static constexpr int padding3 = 20;
 
 	for (const auto& f : m_flower_market.find(std::string(city))->second)
 	{
@@ -49,8 +51,8 @@ void Market::Open(std::string_view city, Player& player)
 		}
 
 		std::cout << std::left << i << ". " << std::setw(padding1) << f.second.GetName()
-			<< std::right << std::setw(6) << f.second.GetQuantity()
-			<< std::setw(20) << luis_fmt::to_cash(f.second.GetBuyPrice()) << "\n";
+			<< std::right << std::setw(padding2) << f.second.GetQuantity()
+			<< std::setw(padding3) << luis_fmt::to_cash(f.second.GetBuyPrice()) << "\n";
 		++i;
 	}
 
