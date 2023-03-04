@@ -115,7 +115,7 @@ void Game::ProcessInput()
 		{
 			// Market
 			std::cout << "Market\n" << std::endl;
-			m_current_city->OpenMarket(m_player);
+			m_market.OpenForBuy(m_current_city->GetName(), m_player);
 			std::cout << std::endl;
 		} break;
 
@@ -428,6 +428,50 @@ void Game::FlyAway()
 		else
 		{
 			std::cout << "\nInvalid answer!\n";
+		}
+	}
+}
+
+void Game::HandleMarketEvent()
+{
+	std::string current_city_name = m_current_city->GetName();
+
+	const int num_choices = m_market.GetOptionCount(current_city_name);
+	bool valid_response = false;
+	
+	m_market.Display(current_city_name);
+	
+	// Get player input
+	while (!valid_response)
+	{
+		std::cout << "\nEnter a value between 1 and " << num_choices << " or type 'E' to [E]xit the market.\n";
+		std::cout << "> ";
+		std::string player_choice;
+		std::getline(std::cin, player_choice);
+
+		if (std::toupper(player_choice[0]) == 'E')
+		{
+			std::cout << "You've exited the Market!\n";
+			valid_response = true;
+			return;
+		}
+		else if ((std::stoi(player_choice) > 0) && (std::stoi(player_choice) < num_choices))
+		{
+			int player_selection = std::stoi(player_choice);
+			
+			/*if (m_market.ProcessBuyEvent(current_city_name, player_selection))
+			{
+				std::string flower 
+			}*/
+
+			/*if (ProcessMarketEvent(player, (std::stoi(player_choice) - 1)))
+			{
+				valid_response = true;
+			}*/
+		}
+		else
+		{
+			std::cout << "\nInvalid response!\n";
 		}
 	}
 }

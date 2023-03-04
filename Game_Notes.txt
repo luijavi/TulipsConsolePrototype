@@ -17,3 +17,9 @@ TODO:
 
     * Consider streamlining the text file loading by counting number of '|' in a line
       and creating a vector of strings for each column (as opposed to creating a string for each line)
+
+    * Okay, so I'll have to handle selling events, which requires the player to pass their inventory
+      
+      Okay, so scratch all that. Let's assume that the player has the buy/sell functionalities. Meaning,
+      that the Player class handles buying and selling flowers and other game objects. So you'd probably
+      have to pass in a Market object to the player class

@@ -9,6 +9,10 @@
 //	kFlowerPedler = 1
 //};
 
+// Forward declarations
+class Flower;
+class Market;
+
 class Player
 {
 public:
@@ -32,8 +36,11 @@ public:
 	void SetHealth(int amount);
 	void SetCash(double amount);
 
-	void AddFlower(const class Flower& flower, int quantity);
-	void RemoveFlower(const class Flower& flower, int quantity);
+	void AddFlower(const Flower& flower, int quantity);
+	void RemoveFlower(const Flower& flower, int quantity);
+
+	void Buy(Market& market);
+	void Sell(Market& market);
 
 	void OpenInventory();
 private:

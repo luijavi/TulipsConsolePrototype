@@ -30,10 +30,8 @@ void Market::Update()
 	}
 }
 
-void Market::Open(std::string_view city, Player& player)
+void Market::Display(std::string_view city)
 {
-	// TODO: Since the Player class also uses something similar to this, maybe make it its own thing?
-	// (The display of market and inventory, I mean)
 	int i = 1;
 	std::cout << "MARKET\n"
 		<< "======================================================================\n"
@@ -55,8 +53,53 @@ void Market::Open(std::string_view city, Player& player)
 			<< std::setw(padding3) << luis_fmt::to_cash(f.second.GetBuyPrice()) << "\n";
 		++i;
 	}
+}
 
-	//GetInput(player, i);
+void Market::OpenForBuy(std::string_view city, Player& player)
+{
+	// TODO: Since the Player class also uses something similar to this, maybe make it its own thing?
+	// (The display of market and inventory, I mean)
+	int i = 1;
+	std::cout << "MARKET\n"
+		<< "======================================================================\n"
+		<< "FLOWER               QUANTITY               BUY                   \n"
+		<< "======================================================================\n";
+	int padding1 = 19;
+	static constexpr int padding2 = 6;
+	static constexpr int padding3 = 20;
+	std::vector<std::string> flower_names;
+
+	for (const auto& f : m_flower_market.find(std::string(city))->second)
+	{
+		if (i > 9)
+		{
+			padding1 = 18;
+		}
+
+		flower_names.push_back(f.second.GetName());
+
+		std::cout << std::left << i << ". " << std::setw(padding1) << f.second.GetName()
+			<< std::right << std::setw(padding2) << f.second.GetQuantity()
+			<< std::setw(padding3) << luis_fmt::to_cash(f.second.GetBuyPrice()) << "\n";
+		++i;
+	}
+
+	int player_response = GetPlayerResponse(flower_names);
+
+	if (player_response != 0)
+	{
+
+	}
+}
+
+bool Market::ProcessBuyEvent(std::string_view city, int index)
+{
+	
+}
+
+const int Market::GetOptionCount(std::string_view city) const
+{
+	return m_flower_market.find(std::string(city))->second.size();
 }
 
 void Market::InitFlowerMarket()
@@ -214,4 +257,66 @@ void Market::RandomizeFlowerQuantity(Flower& flower)
 	std::uniform_int_distribution<int> quantity_range(min_quantity, max_quantity);
 	int quantity = quantity_range(m_engine);
 	flower.SetQuantity(quantity);
+}
+
+//void Market::GetInput(Player& player, int num_choices)
+//{
+//	MarketEvent market_event = MarketEvent::kInvalid;
+//
+//	while (market_event == MarketEvent::kInvalid)
+//	{
+//		std::cout << "\nEnter a value between 1 and " << (num_choices - 1) << " or type 'E' to [E]xit the market.\n";
+//		std::cout << "> ";
+//		std::string player_choice;
+//		std::getline(std::cin, player_choice);
+//
+//		if (std::toupper(player_choice[0]) == 'E')
+//		{
+//			std::cout << "You've exited the Market!\n";
+//			market_event = MarketEvent::kExit;
+//		}
+//		else if ((std::stoi(player_choice) > 0) && (std::stoi(player_choice) < (num_choices - 1)))
+//		{
+//			if (ProcessMarketEvent(player, (std::stoi(player_choice) - 1)))
+//			{
+//				valid_response = true;
+//			}
+//		}
+//		else
+//		{
+//			std::cout << "\nInvalid response!\n";
+//		}
+//	}
+//}
+
+int Market::GetPlayerResponse(const std::vector<std::string>& flower_names)
+{
+	bool valid_response = false;
+	const int num_choices = flower_names.size() + 1;
+	std::string input;
+	int player_response = 0;
+
+	while (!valid_response) 
+	{
+		std::cout << "\nEnter a value between 1 and " << num_choices << " or type 'E' to [E]xit the market.\n";
+		std::cout << "> ";
+		std::getline(std::cin, input);
+
+		if (std::toupper(input[0]) == 'E')
+		{
+			std::cout << "You've exited the Market!\n";
+			valid_response = true;
+		}
+		else if ((std::stoi(input) > 0) && (std::stoi(input) < num_choices))
+		{
+			player_response = std::stoi(input);
+			valid_response = true;
+		}
+		else
+		{
+			std::cout << "\nInvalid response!\n";
+		}
+	}
+
+	return player_response;
 }

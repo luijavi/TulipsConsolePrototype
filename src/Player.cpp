@@ -1,9 +1,11 @@
-#include "Player.h"
-#include "Flower.h"
-#include "luis_utility/Utility.h"
 #include <iostream>
 #include <iomanip>
 #include <cassert>
+
+#include "Player.h"
+#include "Market.h"
+#include "Flower.h"
+#include "luis_utility/Utility.h"
 
 Player::Player()
 	:
@@ -139,6 +141,14 @@ void Player::RemoveFlower(const Flower& flower, int quantity)
 		// TODO: This type of error handling might be too messy. Might have to adjust?
 		std::cerr << "\nWarning! " << flower.GetName() << " not found! No changes made.\n";
 	}
+}
+
+void Player::Buy(Market& market)
+{
+}
+
+void Player::Sell(Market& market)
+{
 }
 
 void Player::OpenInventory()
