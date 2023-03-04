@@ -98,7 +98,7 @@ void Player::SetCash(double amount)
 	m_cash = amount;
 }
 
-void Player::AddFlower(const Flower& flower, int quantity)
+void Player::AddFlower(Flower flower, int quantity)
 {
 	// Check whether player doesn't own flower and set quantity to 0
 	if (m_flowers.find(flower.GetName()) == m_flowers.end())

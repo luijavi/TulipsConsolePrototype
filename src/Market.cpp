@@ -1,3 +1,9 @@
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include <stdexcept>
+
 #include "Market.h"
 #include "Flower.h"
 #include "City.h"
@@ -5,10 +11,6 @@
 #include "luis_utility/Utility.h"
 
 
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <vector>
 
 Market::Market(std::mt19937_64& random_engine)
 	:
@@ -88,13 +90,98 @@ void Market::OpenForBuy(std::string_view city, Player& player)
 
 	if (player_response != 0)
 	{
-
+		std::string chosen_flower = m_flower_market.find(std::string(city))->second.find(flower_names.at(player_response - 1))->second.GetName();
+		ProcessBuyEvent(city, player, chosen_flower);
 	}
 }
 
-bool Market::ProcessBuyEvent(std::string_view city, int index)
+void Market::ProcessBuyEvent(std::string_view city, Player& player, std::string_view flower_name)
 {
 	
+	bool valid_response = false;
+	Flower& chosen_flower = GetFlowerFromMarket(city, flower_name);
+
+	while (!valid_response)
+	{
+		std::cout << "\nHow many units of " << flower_name << " would you like to purchase? (Enter 'C' to cancel.)\n";
+		std::cout << "> ";
+		std::string response;
+		std::getline(std::cin, response);
+
+		if (!std::cin.eof() && luis_utility::is_numeric(response))
+		{
+			int units = std::stoi(response);
+			double cost = units * chosen_flower.GetBuyPrice();
+
+			if (!units || units > chosen_flower.GetQuantity())
+			{
+				std::cout << "\nInvalid quantity! Quantity must be between 1 and " << chosen_flower.GetQuantity() << ".\n";
+				continue;
+			}
+			else if (cost > player.GetCash())
+			{
+				std::cout << "\nInsufficient funds!\n";
+				continue;
+			}
+			else
+			{
+				std::cout << "\nYou have selected to purchase " << units
+					<< " of " << flower_name
+					<< " for a total cost of " << luis_fmt::to_cash(cost) << ".\n"
+					<< "Is this correct? (Y/N) (Enter 'C' to cancel.)\n";
+				std::cout << "> ";
+
+				char c = 'n';
+				while ((std::cin >> c) && ((std::tolower(c) != 'y') || (std::tolower(c) != 'n') || (std::tolower(c) != 'c')))
+				{
+					if (std::cin.eof())
+					{
+						std::cin.clear();
+					}
+
+					std::cout << "\nInvalid answer! Please enter 'Y' or 'N' (or 'C' to cancel)...\n";
+					std::cout << "> ";
+				}
+				
+				switch (std::tolower(c))
+				{
+					case 'y':
+					{
+						chosen_flower.LowerQuantity(units);
+						player.AddFlower(chosen_flower, units);
+						player.DecreaseCash(cost);
+						valid_response = true;
+					} break;
+					case 'n':
+					{
+						std::cout << "\n\n";
+					} break;
+					case 'c':
+					{
+						std::cout << "\nTransaction canceled!\n";
+						valid_response = true;
+					} break;
+				}
+			}
+
+
+		}
+		else if (std::tolower(response[0]) == 'c')
+		{
+			std::cout << "\nTransaction canceled!\n";
+			valid_response = true;
+		}
+		else
+		{
+			std::cout << "\nInvalid argument! Not a number!\n";
+			std::cin.clear();
+		}
+	}
+}
+
+Flower& Market::GetFlowerFromMarket(std::string_view city, std::string_view flower_name)
+{
+	return m_flower_market.find(std::string(city))->second.find(std::string(flower_name))->second;
 }
 
 const int Market::GetOptionCount(std::string_view city) const

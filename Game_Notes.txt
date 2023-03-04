@@ -23,3 +23,7 @@ TODO:
       Okay, so scratch all that. Let's assume that the player has the buy/sell functionalities. Meaning,
       that the Player class handles buying and selling flowers and other game objects. So you'd probably
       have to pass in a Market object to the player class
+
+    * TODO: Okay, so this is probably going to be a real problem. I went through and created a bunch of
+      references to flowers through various functions, and I just now realized that when the Market class
+      randomizes flower stats, it'll affect the player's inventory.

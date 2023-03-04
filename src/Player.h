@@ -36,7 +36,7 @@ public:
 	void SetHealth(int amount);
 	void SetCash(double amount);
 
-	void AddFlower(const Flower& flower, int quantity);
+	void AddFlower(Flower flower, int quantity);
 	void RemoveFlower(const Flower& flower, int quantity);
 
 	void Buy(Market& market);
