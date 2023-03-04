@@ -36,3 +36,19 @@ int luis_utility::count_character(std::string_view source_string, char character
 
 	return count;
 }
+
+bool luis_utility::is_numeric(std::string_view string)
+{
+	if (!string.empty() && std::isdigit(string[0]))
+	{
+		for (const auto& c : string)
+		{
+			if (!std::isdigit(c))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	return false;
+}

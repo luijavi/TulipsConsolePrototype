@@ -9,6 +9,8 @@
 namespace luis_utility
 {
 	int count_character(std::string_view source_string, char character_to_count);
+
+	bool is_numeric(std::string_view string);
 }
 
 namespace luis_fmt
