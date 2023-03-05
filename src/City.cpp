@@ -99,105 +99,105 @@ void City::OpenMarket(Player& player)
 //	}
 //}
 
-bool City::ProcessMarketEvent(Player& player, int choice)
-{
-	std::cout << "\nYou have chosen to purchase " << m_flowers[choice]->GetName() << ". Is this correct? (Y/N)\n";
-	std::cout << "> ";
-	std::string answer;
-	std::getline(std::cin, answer);
-	std::cout << "\n";
+//bool City::ProcessMarketEvent(Player& player, int choice)
+//{
+//	std::cout << "\nYou have chosen to purchase " << m_flowers[choice]->GetName() << ". Is this correct? (Y/N)\n";
+//	std::cout << "> ";
+//	std::string answer;
+//	std::getline(std::cin, answer);
+//	std::cout << "\n";
+//
+//
+//	if (std::toupper(answer[0]) == 'N')
+//	{
+//		return false;
+//	}
+//	else if (std::toupper(answer[0]) == 'Y')
+//	{
+//		std::cout << "How many would you like to purchase?" << std::endl;
+//		std::cout << "> ";
+//		std::string num_purchased_str;
+//		std::getline(std::cin, num_purchased_str);
+//
+//		int num_purchased = std::stoi(num_purchased_str);
+//
+//		if (num_purchased > m_flowers[choice]->GetQuantity())
+//		{
+//			std::cout << "Invalid quantity! Must be less than " << m_flowers[choice]->GetQuantity() << "\n\n";
+//			return false;
+//		}
+//		else if (!num_purchased)
+//		{
+//			return false;
+//		}
+//		else if ((num_purchased * m_flowers[choice]->GetBuyPrice()) > player.GetCash())
+//		{
+//			std::cout << "Insufficient funds!\n\n";
+//			return false;
+//		}
+//		else if (num_purchased_str.empty() || std::all_of(num_purchased_str.begin(), num_purchased_str.end(), ::isalpha))
+//		{
+//			std::cout << "Invalid response!\n\n";
+//			return false;
+//		}
+//		else
+//		{
+//
+//			double purchase_amount = num_purchased * m_flowers[choice]->GetBuyPrice();
+//
+//			std::cout << "\nYou have selected to purchase " << num_purchased << " " << m_flowers[choice]->GetName()
+//				<< " at " << luis_fmt::to_cash(m_flowers[choice]->GetBuyPrice())
+//				<< " for a total of " << luis_fmt::to_cash(purchase_amount) << ".\n";
+//			
+//
+//			// TODO: Add purchase confirmation validation
+//			
+//
+//			std::cout << "\nPress any key to continue...";
+//			std::cin.get();
+//
+//
+//			player.DecreaseCash(purchase_amount);
+//			player.AddFlower(*m_flowers[choice], num_purchased);
+//			m_flowers[choice]->LowerQuantity(num_purchased);
+//			return true;
+//		}
+//	}
+//
+//	return false;
+//}
 
-
-	if (std::toupper(answer[0]) == 'N')
-	{
-		return false;
-	}
-	else if (std::toupper(answer[0]) == 'Y')
-	{
-		std::cout << "How many would you like to purchase?" << std::endl;
-		std::cout << "> ";
-		std::string num_purchased_str;
-		std::getline(std::cin, num_purchased_str);
-
-		int num_purchased = std::stoi(num_purchased_str);
-
-		if (num_purchased > m_flowers[choice]->GetQuantity())
-		{
-			std::cout << "Invalid quantity! Must be less than " << m_flowers[choice]->GetQuantity() << "\n\n";
-			return false;
-		}
-		else if (!num_purchased)
-		{
-			return false;
-		}
-		else if ((num_purchased * m_flowers[choice]->GetBuyPrice()) > player.GetCash())
-		{
-			std::cout << "Insufficient funds!\n\n";
-			return false;
-		}
-		else if (num_purchased_str.empty() || std::all_of(num_purchased_str.begin(), num_purchased_str.end(), ::isalpha))
-		{
-			std::cout << "Invalid response!\n\n";
-			return false;
-		}
-		else
-		{
-
-			double purchase_amount = num_purchased * m_flowers[choice]->GetBuyPrice();
-
-			std::cout << "\nYou have selected to purchase " << num_purchased << " " << m_flowers[choice]->GetName()
-				<< " at " << luis_fmt::to_cash(m_flowers[choice]->GetBuyPrice())
-				<< " for a total of " << luis_fmt::to_cash(purchase_amount) << ".\n";
-			
-
-			// TODO: Add purchase confirmation validation
-			
-
-			std::cout << "\nPress any key to continue...";
-			std::cin.get();
-
-
-			player.DecreaseCash(purchase_amount);
-			player.AddFlower(*m_flowers[choice], num_purchased);
-			m_flowers[choice]->LowerQuantity(num_purchased);
-			return true;
-		}
-	}
-
-	return false;
-}
-
-void City::GetInput(Player& player, int num_choices)
-{
-	// TODO: This should probably be it's own function
-	bool valid_response = false;
-
-	while (!valid_response)
-	{
-		std::cout << "\nEnter a value between 1 and " << (num_choices - 1) << " or type 'E' to [E]xit the market.\n";
-		std::cout << "> ";
-		std::string player_choice;
-		std::getline(std::cin, player_choice);
-
-		if (std::toupper(player_choice[0]) == 'E')
-		{
-			std::cout << "You've exited the Market!\n";
-			valid_response = true;
-			return;
-		}
-		else if ((std::stoi(player_choice) > 0) && (std::stoi(player_choice) < (num_choices - 1)))
-		{
-			if (ProcessMarketEvent(player, (std::stoi(player_choice) - 1)))
-			{
-				valid_response = true;
-			}
-		}
-		else
-		{
-			std::cout << "\nInvalid response!\n";
-		}
-	}
-}
+//void City::GetInput(Player& player, int num_choices)
+//{
+//	// TODO: This should probably be it's own function
+//	bool valid_response = false;
+//
+//	while (!valid_response)
+//	{
+//		std::cout << "\nEnter a value between 1 and " << (num_choices - 1) << " or type 'E' to [E]xit the market.\n";
+//		std::cout << "> ";
+//		std::string player_choice;
+//		std::getline(std::cin, player_choice);
+//
+//		if (std::toupper(player_choice[0]) == 'E')
+//		{
+//			std::cout << "You've exited the Market!\n";
+//			valid_response = true;
+//			return;
+//		}
+//		else if ((std::stoi(player_choice) > 0) && (std::stoi(player_choice) < (num_choices - 1)))
+//		{
+//			if (ProcessMarketEvent(player, (std::stoi(player_choice) - 1)))
+//			{
+//				valid_response = true;
+//			}
+//		}
+//		else
+//		{
+//			std::cout << "\nInvalid response!\n";
+//		}
+//	}
+//}
 
 void City::AddFlowers(std::istringstream flowers)
 {

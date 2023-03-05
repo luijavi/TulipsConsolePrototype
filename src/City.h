@@ -23,9 +23,9 @@ public:
 
 	void AddFlower(std::string_view flower_name);
 	void OpenMarket(Player& player);
-	void UpdateMarketPrices(const std::map<enum class Rarity, RarityValues>& rarity_values);
+	// void UpdateMarketPrices(const std::map<enum class Rarity, RarityValues>& rarity_values);
 private:
-	bool ProcessMarketEvent(Player& player, int choice);
+	// bool ProcessMarketEvent(Player& player, int choice);
 	void GetInput(Player& player, int num_choices);
 	void AddFlowers(std::istringstream flowers);
 private:

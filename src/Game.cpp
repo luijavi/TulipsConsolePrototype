@@ -15,8 +15,8 @@ Game::Game()
 {
 	LoadCities();
 	//LoadRandomEncounters(); // Implement later
-	LoadFlowers();
-	SetRarityValues();
+	
+	
 	InitNewGame();
 }
 
@@ -53,7 +53,8 @@ void Game::InitNewGame()
 
 	std::cout << luis_fmt::to_cash(m_player.GetCash()) << "\n\n";
 	m_market.Update();
-	m_current_city->UpdateMarketPrices(m_rarity_values);
+	// TODO: Delete this...
+	// m_current_city->UpdateMarketPrices(m_rarity_values);
 
 	++m_day_num;
 }
@@ -359,7 +360,7 @@ void Game::NextDay()
 	{
 		std::cout << "Random Encounter!" << std::endl;
 	}
-	m_current_city->UpdateMarketPrices(m_rarity_values);
+	m_market.Update();
 }
 
 void Game::FlyAway()
@@ -422,7 +423,7 @@ void Game::FlyAway()
 			// TODO: Figure out what to do with this warning (C26451)
 			m_current_city = m_cities.at(city_options.at(std::stoi(player_choice) - 1));
 			++m_day_num;
-			m_current_city->UpdateMarketPrices(m_rarity_values);
+			m_market.Update();
 			valid_answer = true;
 		}
 		else
