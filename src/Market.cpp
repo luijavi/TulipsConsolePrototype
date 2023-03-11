@@ -128,11 +128,51 @@ void Market::ProcessBuyEvent(std::string_view city, Player& player, std::string_
 				std::cout << "\nYou have selected to purchase " << units
 					<< " of " << flower_name
 					<< " for a total cost of " << luis_fmt::to_cash(cost) << ".\n"
-					<< "Is this correct? (Y/N) (Enter 'C' to cancel.)\n";
+					<< "\nIs this correct? (Y/N) (Enter 'C' to cancel.)\n";
 				std::cout << "> ";
 
-				char c = 'n';
-				while ((std::cin >> c) && ((std::tolower(c) != 'y') || (std::tolower(c) != 'n') || (std::tolower(c) != 'c')))
+				std::string confirmation;
+				std::getline(std::cin, confirmation);
+				bool transaction_complete = false;
+				char c = confirmation[0];
+
+				while (!transaction_complete)
+				{
+					if (!std::cin.eof())
+					{
+						switch (std::tolower(c))
+						{
+							case 'y':
+							{
+								chosen_flower.LowerQuantity(units);
+								player.AddFlower(chosen_flower, units);
+								player.DecreaseCash(cost);
+								valid_response = true;
+								transaction_complete = true;
+							} break;
+							case 'n':
+							{
+								std::cout << "\n\n";
+								transaction_complete = true;
+							} break;
+							case 'c':
+							{
+								std::cout << "\nTransaction canceled!\n";
+								valid_response = true;
+								transaction_complete = true;
+							} break;
+							default:
+							{
+								std::cout << "\nInvalid answer! Please enter 'Y' or 'N' (or 'C' to cancel)...\n";
+								std::cout << "> ";
+								std::getline(std::cin, confirmation);
+								c = confirmation[0];
+							} break;
+						}
+					}
+				}
+
+				/*while ((std::cin >> c) && ((std::tolower(c) != 'y') || (std::tolower(c) != 'n') || (std::tolower(c) != 'c')))
 				{
 					if (std::cin.eof())
 					{
@@ -161,10 +201,8 @@ void Market::ProcessBuyEvent(std::string_view city, Player& player, std::string_
 						std::cout << "\nTransaction canceled!\n";
 						valid_response = true;
 					} break;
-				}
+				}*/
 			}
-
-
 		}
 		else if (std::tolower(response[0]) == 'c')
 		{
@@ -379,7 +417,7 @@ void Market::RandomizeFlowerQuantity(Flower& flower)
 int Market::GetPlayerResponse(const std::vector<std::string>& flower_names)
 {
 	bool valid_response = false;
-	const int num_choices = flower_names.size() + 1;
+	const auto num_choices = flower_names.size();
 	std::string input;
 	int player_response = 0;
 
