@@ -171,37 +171,6 @@ void Market::ProcessBuyEvent(std::string_view city, Player& player, std::string_
 						}
 					}
 				}
-
-				/*while ((std::cin >> c) && ((std::tolower(c) != 'y') || (std::tolower(c) != 'n') || (std::tolower(c) != 'c')))
-				{
-					if (std::cin.eof())
-					{
-						std::cin.clear();
-					}
-
-					std::cout << "\nInvalid answer! Please enter 'Y' or 'N' (or 'C' to cancel)...\n";
-					std::cout << "> ";
-				}
-				
-				switch (std::tolower(c))
-				{
-					case 'y':
-					{
-						chosen_flower.LowerQuantity(units);
-						player.AddFlower(chosen_flower, units);
-						player.DecreaseCash(cost);
-						valid_response = true;
-					} break;
-					case 'n':
-					{
-						std::cout << "\n\n";
-					} break;
-					case 'c':
-					{
-						std::cout << "\nTransaction canceled!\n";
-						valid_response = true;
-					} break;
-				}*/
 			}
 		}
 		else if (std::tolower(response[0]) == 'c')
@@ -383,36 +352,6 @@ void Market::RandomizeFlowerQuantity(Flower& flower)
 	int quantity = quantity_range(m_engine);
 	flower.SetQuantity(quantity);
 }
-
-//void Market::GetInput(Player& player, int num_choices)
-//{
-//	MarketEvent market_event = MarketEvent::kInvalid;
-//
-//	while (market_event == MarketEvent::kInvalid)
-//	{
-//		std::cout << "\nEnter a value between 1 and " << (num_choices - 1) << " or type 'E' to [E]xit the market.\n";
-//		std::cout << "> ";
-//		std::string player_choice;
-//		std::getline(std::cin, player_choice);
-//
-//		if (std::toupper(player_choice[0]) == 'E')
-//		{
-//			std::cout << "You've exited the Market!\n";
-//			market_event = MarketEvent::kExit;
-//		}
-//		else if ((std::stoi(player_choice) > 0) && (std::stoi(player_choice) < (num_choices - 1)))
-//		{
-//			if (ProcessMarketEvent(player, (std::stoi(player_choice) - 1)))
-//			{
-//				valid_response = true;
-//			}
-//		}
-//		else
-//		{
-//			std::cout << "\nInvalid response!\n";
-//		}
-//	}
-//}
 
 int Market::GetPlayerResponse(const std::vector<std::string>& flower_names)
 {
