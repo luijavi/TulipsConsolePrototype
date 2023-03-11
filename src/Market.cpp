@@ -11,7 +11,6 @@
 #include "luis_utility/Utility.h"
 
 
-
 Market::Market(std::mt19937_64& random_engine)
 	:
 	m_engine(random_engine)

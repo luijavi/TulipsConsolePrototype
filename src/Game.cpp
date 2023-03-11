@@ -53,8 +53,6 @@ void Game::InitNewGame()
 
 	std::cout << luis_fmt::to_cash(m_player.GetCash()) << "\n\n";
 	m_market.Update();
-	// TODO: Delete this...
-	// m_current_city->UpdateMarketPrices(m_rarity_values);
 
 	++m_day_num;
 }
@@ -221,138 +219,6 @@ void Game::LoadRandomEncounters()
 	}
 }
 
-/*
-// Loads and parses FlowersList.txt file, which is used to fill a Flower object (which is
-// owned by the city objects
-void Game::LoadFlowers()
-{
-	std::string filename = "Resources\\FlowersList.txt";
-	std::ifstream file{ filename, std::ios::in };
-
-	if (!file.is_open())
-	{
-		std::cout << "Failed to open " << filename << std::endl;
-	}
-	else
-	{
-		while (!file.eof())
-		{
-			std::string line;
-			std::getline(file, line);
-
-			if (line[0] == '$' || line.empty())
-			{
-				continue;
-			}
-			else
-			{
-				std::istringstream flower_data(line);
-				std::string name;
-				std::string rarity;
-				std::string longevity;
-				std::string hotness;
-				std::string cities;
-
-				std::getline(flower_data, name, '|');
-				std::getline(flower_data, rarity, '|');
-				std::getline(flower_data, longevity, '|');
-				std::getline(flower_data, hotness, '|');
-				std::getline(flower_data, cities, '|');
-
-				Flower f = {};
-
-				f.SetName(name);
-				f.SetRarity(static_cast<Rarity>(std::stoi(rarity)));
-				f.SetLongevity(std::stoi(longevity));
-				f.SetHotness(std::stoi(hotness));
-
-				m_flowers.emplace(name, f);
-
-				if (cities == "*")
-				{
-					for (auto& c : m_cities)
-					{
-						c.second->AddFlower(&(m_flowers.find(name)->second));
-					}
-				}
-				else if (cities == "none")
-				{
-					continue;
-				}
-				else
-				{
-					std::istringstream cities_line(cities);
-					std::string c;
-
-					while (std::getline(cities_line, c, '#') && !cities_line.eof())
-					{
-						m_cities.find(c)->second->AddFlower(&(m_flowers.find(name)->second));
-					}
-				}
-			}
-		}
-
-		file.close();
-	}
-}
-*/
-
-/*
-// Loads and parses RarityValues.txt file, and sets the rarity values for each
-// flower
-void Game::SetRarityValues()
-{
-	std::string filename = "Resources\\RarityValues.txt";
-	std::ifstream file(filename, std::ios::in);
-
-	if (!file.is_open())
-	{
-		std::cout << "Failed to open " << filename << std::endl;
-	}
-	else
-	{
-		constexpr char delim = '|';
-
-		while (!file.eof())
-		{
-			std::string line;
-			std::getline(file, line);
-
-			if (line[0] == '$' || line.empty())
-			{
-				continue;
-			}
-			else
-			{
-				std::string rarity_key;
-				std::string min_price;
-				std::string max_price;
-				std::string min_quantity;
-				std::string max_quantity;
-
-				std::istringstream iss(line);
-				std::getline(iss, rarity_key, delim);
-				std::getline(iss, min_price, delim);
-				std::getline(iss, max_price, delim);
-				std::getline(iss, min_quantity, delim);
-				std::getline(iss, max_quantity, delim);
-
-				RarityValues p_vals = RarityValues{};
-
-				p_vals.rarity_key = static_cast<Rarity>(std::stoi(rarity_key));
-				p_vals.min_price = static_cast<double>(std::stof(min_price));
-				p_vals.max_price = static_cast<double>(std::stof(max_price));
-				p_vals.min_quantity = static_cast<int>(std::stoi(min_quantity));
-				p_vals.max_quantity = static_cast<int>(std::stoi(max_quantity));
-
-				m_rarity_values.emplace(p_vals.rarity_key, p_vals);
-			}
-		}
-		file.close();
-	}
-}
-*/
-
 void Game::NextDay()
 {
 	++m_day_num;
@@ -429,50 +295,6 @@ void Game::FlyAway()
 		else
 		{
 			std::cout << "\nInvalid answer!\n";
-		}
-	}
-}
-
-void Game::HandleMarketEvent()
-{
-	std::string current_city_name = m_current_city->GetName();
-
-	const int num_choices = m_market.GetOptionCount(current_city_name);
-	bool valid_response = false;
-	
-	m_market.Display(current_city_name);
-	
-	// Get player input
-	while (!valid_response)
-	{
-		std::cout << "\nEnter a value between 1 and " << num_choices << " or type 'E' to [E]xit the market.\n";
-		std::cout << "> ";
-		std::string player_choice;
-		std::getline(std::cin, player_choice);
-
-		if (std::toupper(player_choice[0]) == 'E')
-		{
-			std::cout << "You've exited the Market!\n";
-			valid_response = true;
-			return;
-		}
-		else if ((std::stoi(player_choice) > 0) && (std::stoi(player_choice) < num_choices))
-		{
-			int player_selection = std::stoi(player_choice);
-			
-			/*if (m_market.ProcessBuyEvent(current_city_name, player_selection))
-			{
-				std::string flower 
-			}*/
-
-			/*if (ProcessMarketEvent(player, (std::stoi(player_choice) - 1)))
-			{
-				valid_response = true;
-			}*/
-		}
-		else
-		{
-			std::cout << "\nInvalid response!\n";
 		}
 	}
 }

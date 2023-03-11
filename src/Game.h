@@ -49,12 +49,9 @@ private:
 
 	void LoadCities();
 	void LoadRandomEncounters();
-	// void LoadFlowers();
-	// void SetRarityValues();
 
 	void NextDay();
 	void FlyAway();
-	void HandleMarketEvent();
 
 	bool GameOver();
 	bool PlayAgain(const GameOverConditions& reason);

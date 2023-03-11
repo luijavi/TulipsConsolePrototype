@@ -10,32 +10,8 @@
 typedef unsigned short Longevity;
 typedef unsigned short Hotness;
 
-//enum class Rarity
-//{
-//	kCommon = 1,
-//	kUncommon,
-//	kRare,
-//	kLegendary,
-//	kMythic,
-//	kUnique
-//};
-
-//struct PriceRange
-//{
-//	double min_price;
-//	double max_price;
-//};
-//
-//struct QuantityRange
-//{
-//	int min_quantity;
-//	int max_quantity;
-//};
-
 class Flower
 {
-private:
-//	friend class Market;
 public:
 	// TODO: Create parameterized constructors and maybe get rid of all these setters
 	Flower();
@@ -76,14 +52,3 @@ private:
 	// TODO: This may have to be moved out of the Flower and just live in the Market class
 	std::set<std::string> m_cities;		
 };
-
-
-// Used to set the price and quantities at market
-//struct RarityValues
-//{
-//	Rarity rarity_key;
-//	double min_price;
-//	double max_price;
-//	int min_quantity;
-//	int max_quantity;
-//};
