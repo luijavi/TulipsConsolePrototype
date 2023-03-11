@@ -27,7 +27,7 @@ public:
 private:
 	// bool ProcessMarketEvent(Player& player, int choice);
 	void GetInput(Player& player, int num_choices);
-	void AddFlowers(std::istringstream flowers);
+	void AddFlowers(std::string_view flowers);
 private:
 	std::string m_name;
 	std::string m_country;

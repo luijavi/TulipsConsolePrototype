@@ -1,4 +1,5 @@
 #include "Utility.h"
+#include <string>
 
 namespace luis_fmt
 {
@@ -26,7 +27,7 @@ int luis_utility::count_character(std::string_view source_string, char character
 {
 	int count = 0;
 
-	for (auto s : source_string)
+	for (const auto& s : source_string)
 	{
 		if (s == character_to_count)
 		{

@@ -34,7 +34,7 @@ private:
 	void ProcessBuyEvent(std::string_view city, Player& player, std::string_view flower_name);
 	Flower& GetFlowerFromMarket(std::string_view city, std::string_view flower_name);
 private:
-	static FlowerMarket m_flower_market;
-	static std::map<Rarity, RarityValues> m_rarity_map;
+	FlowerMarket m_flower_market;
+	std::map<Rarity, RarityValues> m_rarity_map;
 	std::mt19937_64& m_engine;
 };

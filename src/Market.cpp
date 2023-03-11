@@ -251,13 +251,13 @@ void Market::InitFlowerMarket()
 		while (!cities_file.eof())
 		{
 			std::string line;
-			file_lines.emplace_back(std::getline(cities_file, line));
+			std::getline(cities_file, line);
+			file_lines.emplace_back(line);
 		}
 
 		for (auto l : file_lines)
 		{
 			City c{ l };
-
 			std::map<std::string, Flower> city_flowers;
 
 			for (auto f : c.m_flowers)

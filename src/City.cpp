@@ -12,6 +12,7 @@ City::City(std::string_view city_data)
 {
 	std::istringstream iss(std::string(city_data), std::ios::in);
 	constexpr char delim = '|';
+	constexpr char sub_delim = '#';
 
 	std::getline(iss, m_name, delim);
 	std::getline(iss, m_country, delim);
@@ -21,9 +22,8 @@ City::City(std::string_view city_data)
 	// TODO: This may have to be moved elsewhere, since it's unused currently
 	std::string flowers;
 	std::getline(iss, flowers, delim);
-	std::istringstream flowers_iss(flowers);
 
-
+	AddFlowers(flowers);
 }
 
 City::City(std::string name, std::string country)
@@ -199,14 +199,15 @@ void City::OpenMarket(Player& player)
 //	}
 //}
 
-void City::AddFlowers(std::istringstream flowers)
+void City::AddFlowers(std::string_view flowers)
 {
+	std::istringstream iss(std::string(flowers), std::ios::in);
 	static constexpr char delim = '#';
 
-	while (!flowers.eof())
+	while (!iss.eof())
 	{
 		std::string flower;
-		std::getline(flowers, flower, delim);
+		std::getline(iss, flower, delim);
 		m_flowers.push_back(flower);
 	}
 }
