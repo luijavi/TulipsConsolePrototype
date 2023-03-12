@@ -44,6 +44,12 @@ void Market::OpenForBuy(std::string_view city, Player& player)
 
 	for (const auto& f : m_flower_market.find(std::string(city))->second)
 	{
+		// Do not display flower if there is no quantity assigned to it (specifically the rose)
+		if (!(f.second.GetQuantity()))
+		{
+			continue;
+		}
+
 		if (i > 9)
 		{
 			padding1 = 18;
