@@ -270,6 +270,7 @@ void Market::InitRarityMap()
 			std::string max_price;
 			std::string min_quantity;
 			std::string max_quantity;
+			std::string spread;
 
 			std::istringstream iss(line);
 			std::getline(iss, rarity_key, delim);
@@ -277,14 +278,16 @@ void Market::InitRarityMap()
 			std::getline(iss, max_price, delim);
 			std::getline(iss, min_quantity, delim);
 			std::getline(iss, max_quantity, delim);
+			std::getline(iss, spread, delim);
 
 			RarityValues p_vals = RarityValues{};
 
 			p_vals.rarity_key = static_cast<Rarity>(std::stoi(rarity_key));
-			p_vals.min_price = static_cast<double>(std::stof(min_price));
-			p_vals.max_price = static_cast<double>(std::stof(max_price));
+			p_vals.min_price = static_cast<double>(std::stod(min_price));
+			p_vals.max_price = static_cast<double>(std::stod(max_price));
 			p_vals.min_quantity = static_cast<int>(std::stoi(min_quantity));
 			p_vals.max_quantity = static_cast<int>(std::stoi(max_quantity));
+			p_vals.spread = static_cast<double>(std::stod(spread));
 
 			m_rarity_map.emplace(p_vals.rarity_key, p_vals);
 
