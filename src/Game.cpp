@@ -352,6 +352,8 @@ bool Game::PlayAgain(const GameOverConditions& reason)
 		else
 		{
 			std::cout << "\nInvalid answer!\n";
+			std::cout << "\nPlay again? (Y/N)\n"
+				<< "> ";
 		}
 	}
 
