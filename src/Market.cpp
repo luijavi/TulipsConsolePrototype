@@ -341,7 +341,7 @@ int Market::GetPlayerResponse(const std::vector<std::string>& flower_names)
 
 	while (!valid_response) 
 	{
-		std::cout << "\nEnter a value between 1 and " << num_choices << " or type 'E' to [E]xit the market.\n";
+		std::cout << "\nEnter a value between 1 and " << num_choices << " to make a purchase, or type 'E' to [E]xit the market.\n";
 		std::cout << "> ";
 		std::getline(std::cin, input);
 
