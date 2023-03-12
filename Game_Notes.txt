@@ -29,3 +29,6 @@ TODO:
       randomizes flower stats, it'll affect the player's inventory.
 
     * Maybe use floats instead of doubles, since doubles are friggen' 8 bytes!!
+
+    * Okay, also... may need to change the Flower class to only be "price," since buy price is useless when
+      the flower is in the player's inventory.

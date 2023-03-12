@@ -304,12 +304,17 @@ void Market::RandomizeFlowerMarketData(Flower& flower)
 
 void Market::RandomizeFlowerPrice(Flower& flower)
 {
-	auto min_price = m_rarity_map.find(flower.GetRarity())->second.min_price;
-	auto max_price = m_rarity_map.find(flower.GetRarity())->second.max_price;
+	double min_price = m_rarity_map.find(flower.GetRarity())->second.min_price;
+	double max_price = m_rarity_map.find(flower.GetRarity())->second.max_price;
 	std::uniform_real_distribution<double> price_range(min_price, max_price);
 
 	double buy_price = luis_math::round(price_range(m_engine), 0.01);
+
+	double spread = (m_rarity_map.find(flower.GetRarity())->second.spread) / 100.0;
+	double sell_price = luis_math::round(buy_price * spread, 0.01);
+
 	flower.SetBuyPrice(buy_price);
+	flower.SetSellPrice(sell_price);
 }
 
 void Market::RandomizeFlowerQuantity(Flower& flower)
