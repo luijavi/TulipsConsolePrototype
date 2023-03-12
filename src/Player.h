@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
+#include <vector>
 
 // Rankings determined by the player score. One of the main mechanics
 // (Work your way up the criminal flower underworld
@@ -39,6 +40,9 @@ public:
 	void RemoveFlower(const Flower& flower, int quantity);
 
 	void OpenInventory();
+private:
+	int GetPlayerResponse(const std::vector<std::string>& flower_names);
+	void ProcessSellEvent(std::string_view flower_name);
 private:
 	static constexpr unsigned short kMaxHealth = 100;
 	static constexpr unsigned short kMinHealth = 0;
