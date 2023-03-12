@@ -59,7 +59,7 @@ void Market::OpenForBuy(std::string_view city, Player& player)
 
 		std::cout << std::left << i << ". " << std::setw(padding_1) << f.second.GetName()
 			<< std::right << std::setw(padding_2) << f.second.GetQuantity()
-			<< std::setw(padding_3) << luis_fmt::to_cash(f.second.GetBuyPrice()) << "\n";
+			<< std::setw(padding_3) << luis_fmt::to_cash(f.second.GetPrice()) << "\n";
 		++i;
 	}
 
@@ -75,7 +75,7 @@ void Market::OpenForBuy(std::string_view city, Player& player)
 void Market::ProcessBuyEvent(std::string_view city, Player& player, std::string_view flower_name)
 {
 	bool valid_response = false;
-	Flower& chosen_flower = GetFlowerFromMarket(city, flower_name);
+	Flower chosen_flower = GetFlowerFromMarket(city, flower_name);
 
 	while (!valid_response)
 	{
@@ -87,7 +87,7 @@ void Market::ProcessBuyEvent(std::string_view city, Player& player, std::string_
 		if (!std::cin.eof() && luis_utility::is_numeric(response))
 		{
 			int units = std::stoi(response);
-			double cost = units * chosen_flower.GetBuyPrice();
+			double cost = units * chosen_flower.GetPrice();
 
 			if (!units || units > chosen_flower.GetQuantity())
 			{
@@ -120,7 +120,11 @@ void Market::ProcessBuyEvent(std::string_view city, Player& player, std::string_
 						{
 							case 'y':
 							{
-								chosen_flower.LowerQuantity(units);
+								m_flower_market.find(std::string(city))->second.find(chosen_flower.GetName())->second.LowerQuantity(units);
+								
+								double spread = 1 - (m_rarity_map.find(chosen_flower.GetRarity())->second.spread / 100.0);
+								double new_price = luis_math::round(chosen_flower.GetPrice() * spread, 0.01);
+								chosen_flower.SetPrice(new_price);
 								player.AddFlower(chosen_flower, units);
 								player.DecreaseCash(cost);
 								valid_response = true;
@@ -162,7 +166,7 @@ void Market::ProcessBuyEvent(std::string_view city, Player& player, std::string_
 	}
 }
 
-Flower& Market::GetFlowerFromMarket(std::string_view city, std::string_view flower_name)
+Flower Market::GetFlowerFromMarket(std::string_view city, std::string_view flower_name)
 {
 	return m_flower_market.find(std::string(city))->second.find(std::string(flower_name))->second;
 }
@@ -314,13 +318,12 @@ void Market::RandomizeFlowerPrice(Flower& flower)
 	double max_price = m_rarity_map.find(flower.GetRarity())->second.max_price;
 	std::uniform_real_distribution<double> price_range(min_price, max_price);
 
-	double buy_price = luis_math::round(price_range(m_engine), 0.01);
+	double price = luis_math::round(price_range(m_engine), 0.01);
 
-	double spread = 1 - (m_rarity_map.find(flower.GetRarity())->second.spread / 100.0);
-	double sell_price = luis_math::round(buy_price * spread, 0.01);
+	/*double spread = 1 - (m_rarity_map.find(flower.GetRarity())->second.spread / 100.0);
+	double sell_price = luis_math::round(buy_price * spread, 0.01);*/
 
-	flower.SetBuyPrice(buy_price);
-	flower.SetSellPrice(sell_price);
+	flower.SetPrice(price);
 }
 
 void Market::RandomizeFlowerQuantity(Flower& flower)

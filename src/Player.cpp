@@ -175,7 +175,7 @@ void Player::OpenInventory()
 
 			std::cout << std::left << i << ". " << std::setw(padding_1) << f.second.GetName()
 				<< std::right << std::setw(padding_2) << f.second.GetQuantity()
-				<< std::setw(padding_3) << luis_fmt::to_cash(f.second.GetSellPrice()) << "\n";
+				<< std::setw(padding_3) << luis_fmt::to_cash(f.second.GetPrice()) << "\n";
 			++i;
 		}
 
@@ -235,7 +235,7 @@ void Player::ProcessSellEvent(std::string_view flower_name)
 		if (!std::cin.eof() && luis_utility::is_numeric(response))
 		{
 			int units = std::stoi(response);
-			double sale_amount = units * chosen_flower.GetSellPrice();
+			double sale_amount = units * chosen_flower.GetPrice();
 
 			if (!units || units > chosen_flower.GetQuantity())
 			{

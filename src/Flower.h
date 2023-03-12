@@ -23,15 +23,13 @@ public:
 	void SetRarity(int rarity);
 	void SetLongevity(Longevity longevity);
 	void SetHotness(Hotness hotness);
-	void SetBuyPrice(double buy_price);
-	void SetSellPrice(double sell_price);
+	void SetPrice(double price);
 	void SetQuantity(int quantity);
 	std::string GetName() const;
 	const Rarity GetRarity() const;
 	const Longevity GetLongevity() const;
 	const Hotness GetHotness() const;
-	const double GetBuyPrice() const;
-	const double GetSellPrice() const;
+	const double GetPrice() const;
 	const int GetQuantity() const;
 
 	void LowerQuantity(int quantity);
@@ -43,8 +41,7 @@ private:
 	Rarity m_rarity;
 	Longevity m_longevity;
 	Hotness m_hotness;
-	double m_buy_price;
-	double m_sell_price;
+	double m_price;
 	
 	// TODO: Quantity should probably not be in Flower class
 	int m_quantity;	

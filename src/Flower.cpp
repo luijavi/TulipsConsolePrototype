@@ -12,16 +12,14 @@ Flower::Flower()
 	m_rarity(Rarity::kCommon),
 	m_longevity(0),
 	m_hotness(0),
-	m_buy_price(0.0),
-	m_sell_price(0.0),
+	m_price(0.0),
 	m_quantity(0)
 {
 }
 
 Flower::Flower(std::istringstream& data)
 	:
-	m_buy_price(0.0),
-	m_sell_price(0.0),
+	m_price(0.0),
 	m_quantity(0)
 {
 	const char delim = '|';
@@ -71,14 +69,9 @@ const Hotness Flower::GetHotness() const
 	return m_hotness;
 }
 
-const double Flower::GetBuyPrice() const
+const double Flower::GetPrice() const
 {
-	return m_buy_price;
-}
-
-const double Flower::GetSellPrice() const
-{
-	return m_sell_price;
+	return m_price;
 }
 
 const int Flower::GetQuantity() const
@@ -101,13 +94,13 @@ void Flower::IncreaseQuantity(int quantity)
 void Flower::IncreasePrice(double amount)
 {
 	assert(amount > 0);
-	m_buy_price = luis_math::add_without_overflow(m_buy_price, amount);
+	m_price = luis_math::add_without_overflow(m_price, amount);
 }
 
 void Flower::LowerPrice(double amount)
 {
-	assert(amount < m_buy_price);
-	m_buy_price = luis_math::sub_without_underflow(m_buy_price, amount);
+	assert(amount < m_price);
+	m_price = luis_math::sub_without_underflow(m_price, amount);
 }
 
 
@@ -137,18 +130,11 @@ void Flower::SetHotness(Hotness hotness)
 	m_hotness = hotness;
 }
 
-void Flower::SetBuyPrice(double buy_price)
+void Flower::SetPrice(double price)
 {
-	assert(buy_price > 0 && "Buy price can't be negative!\n");
+	assert(price > 0 && "Buy price can't be negative!\n");
 
-	m_buy_price = buy_price;
-}
-
-void Flower::SetSellPrice(double sell_price)
-{
-	assert(sell_price > 0 && "Sell price cannot be negative!\n");
-
-	m_sell_price = sell_price;
+	m_price = price;
 }
 
 void Flower::SetQuantity(int quantity)

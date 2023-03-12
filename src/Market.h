@@ -28,7 +28,7 @@ private:
 	void RandomizeFlowerQuantity(Flower& flower);
 	int GetPlayerResponse(const std::vector<std::string>& flower_names);
 	void ProcessBuyEvent(std::string_view city, Player& player, std::string_view flower_name);
-	Flower& GetFlowerFromMarket(std::string_view city, std::string_view flower_name);
+	Flower GetFlowerFromMarket(std::string_view city, std::string_view flower_name);
 private:
 	FlowerMarket m_flower_market;
 	std::map<Rarity, RarityValues> m_rarity_map;
