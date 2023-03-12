@@ -32,3 +32,6 @@ TODO:
 
     * Okay, also... may need to change the Flower class to only be "price," since buy price is useless when
       the flower is in the player's inventory.
+
+    * Also, there's a lot of repetition with the player buying/selling in the Market and Player classes... 
+      Like, especially with ProcessBuyEvent and ProcessSellEvent. They're basically the same functions
