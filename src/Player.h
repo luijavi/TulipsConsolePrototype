@@ -11,7 +11,6 @@
 
 // Forward declarations
 class Flower;
-class Market;
 
 class Player
 {
@@ -39,9 +38,6 @@ public:
 	void AddFlower(Flower flower, int quantity);
 	void RemoveFlower(const Flower& flower, int quantity);
 
-	void Buy(Market& market);
-	void Sell(Market& market);
-
 	void OpenInventory();
 private:
 	static constexpr unsigned short kMaxHealth = 100;
@@ -49,5 +45,5 @@ private:
 	int m_health;
 	double m_cash;
 
-	std::map<std::string, class Flower> m_flowers;
+	std::map<std::string, Flower> m_flowers;
 };
