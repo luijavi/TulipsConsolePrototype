@@ -183,6 +183,7 @@ void Player::OpenInventory()
 
 		if (player_response != 0)
 		{
+			--player_response;
 			ProcessSellEvent(flower_names.at(player_response));
 		}
 	}
@@ -206,7 +207,7 @@ int Player::GetPlayerResponse(const std::vector<std::string>& flower_names)
 			std::cout << "You've exited your inventory!\n";
 			valid_response = true;
 		}
-		else if ((std::stoi(input) > 0) && (std::stoi(input) < num_choices))
+		else if ((std::stoi(input) > 0) && (std::stoi(input) <= num_choices))
 		{
 			player_response = std::stoi(input);
 			valid_response = true;

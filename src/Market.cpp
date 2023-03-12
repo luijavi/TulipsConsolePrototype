@@ -67,7 +67,8 @@ void Market::OpenForBuy(std::string_view city, Player& player)
 
 	if (player_response != 0)
 	{
-		std::string chosen_flower = m_flower_market.find(std::string(city))->second.find(flower_names.at(player_response - 1))->second.GetName();
+		--player_response;
+		std::string chosen_flower = m_flower_market.find(std::string(city))->second.find(flower_names.at(player_response))->second.GetName();
 		ProcessBuyEvent(city, player, chosen_flower);
 	}
 }
@@ -353,7 +354,7 @@ int Market::GetPlayerResponse(const std::vector<std::string>& flower_names)
 			std::cout << "You've exited the Market!\n";
 			valid_response = true;
 		}
-		else if ((std::stoi(input) > 0) && (std::stoi(input) < num_choices))
+		else if ((std::stoi(input) > 0) && (std::stoi(input) <= num_choices))
 		{
 			player_response = std::stoi(input);
 			valid_response = true;
