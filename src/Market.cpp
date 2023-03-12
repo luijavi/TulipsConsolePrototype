@@ -19,7 +19,6 @@ Market::Market(std::mt19937_64& random_engine)
 	InitFlowerMarket();
 }
 
-//TODO: Might have to also pass the random_device to this function
 void Market::Update()
 {
 	for (auto& city_map : m_flower_market)
@@ -31,35 +30,8 @@ void Market::Update()
 	}
 }
 
-void Market::Display(std::string_view city)
-{
-	int i = 1;
-	std::cout << "MARKET\n"
-		<< "======================================================================\n"
-		<< "FLOWER               QUANTITY               BUY                   \n"
-		<< "======================================================================\n";
-	int padding1 = 19;
-	static constexpr int padding2 = 6;
-	static constexpr int padding3 = 20;
-
-	for (const auto& f : m_flower_market.find(std::string(city))->second)
-	{
-		if (i > 9)
-		{
-			padding1 = 18;
-		}
-
-		std::cout << std::left << i << ". " << std::setw(padding1) << f.second.GetName()
-			<< std::right << std::setw(padding2) << f.second.GetQuantity()
-			<< std::setw(padding3) << luis_fmt::to_cash(f.second.GetBuyPrice()) << "\n";
-		++i;
-	}
-}
-
 void Market::OpenForBuy(std::string_view city, Player& player)
 {
-	// TODO: Since the Player class also uses something similar to this, maybe make it its own thing?
-	// (The display of market and inventory, I mean)
 	int i = 1;
 	std::cout << "MARKET\n"
 		<< "======================================================================\n"
@@ -96,7 +68,6 @@ void Market::OpenForBuy(std::string_view city, Player& player)
 
 void Market::ProcessBuyEvent(std::string_view city, Player& player, std::string_view flower_name)
 {
-	
 	bool valid_response = false;
 	Flower& chosen_flower = GetFlowerFromMarket(city, flower_name);
 
@@ -188,11 +159,6 @@ void Market::ProcessBuyEvent(std::string_view city, Player& player, std::string_
 Flower& Market::GetFlowerFromMarket(std::string_view city, std::string_view flower_name)
 {
 	return m_flower_market.find(std::string(city))->second.find(std::string(flower_name))->second;
-}
-
-const int Market::GetOptionCount(std::string_view city) const
-{
-	return m_flower_market.find(std::string(city))->second.size();
 }
 
 void Market::InitFlowerMarket()

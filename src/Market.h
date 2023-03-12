@@ -19,10 +19,7 @@ public:
 	Market(std::mt19937_64& random_engine);
 
 	void Update();
-	void Display(std::string_view city);
 	void OpenForBuy(std::string_view city, Player& player);
-
-	const int GetOptionCount(std::string_view city) const;
 private:
 	void InitFlowerMarket();
 	void InitRarityMap();
