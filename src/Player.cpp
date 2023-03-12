@@ -149,18 +149,20 @@ void Player::OpenInventory()
 		<< "======================================================================\n"
 		<< "FLOWER               QUANTITY               SELL\n"
 		<< "======================================================================\n";
-	int padding1 = 19;
+	static int padding_1 = 19;
+	static constexpr int padding_2 = 6;
+	static constexpr int padding_3 = 20;
 
 	for (const auto& f : m_flowers)
 	{
 		if (i > 9)
 		{
-			padding1 = 18;
+			padding_1 = 18;
 		}
 
-		std::cout << std::left << i << ". " << std::setw(padding1) << f.second.GetName()
-			<< std::right << std::setw(6) << f.second.GetQuantity()
-			<< std::setw(20) << luis_fmt::to_cash(f.second.GetSellPrice()) << "\n";
+		std::cout << std::left << i << ". " << std::setw(padding_1) << f.second.GetName()
+			<< std::right << std::setw(padding_2) << f.second.GetQuantity()
+			<< std::setw(padding_3) << luis_fmt::to_cash(f.second.GetSellPrice()) << "\n";
 		++i;
 	}
 

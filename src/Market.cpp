@@ -37,9 +37,9 @@ void Market::OpenForBuy(std::string_view city, Player& player)
 		<< "======================================================================\n"
 		<< "FLOWER               QUANTITY               BUY                   \n"
 		<< "======================================================================\n";
-	int padding1 = 19;
-	static constexpr int padding2 = 6;
-	static constexpr int padding3 = 20;
+	static int padding_1 = 19;
+	static constexpr int padding_2 = 6;
+	static constexpr int padding_3 = 20;
 	std::vector<std::string> flower_names;
 
 	for (const auto& f : m_flower_market.find(std::string(city))->second)
@@ -52,14 +52,14 @@ void Market::OpenForBuy(std::string_view city, Player& player)
 
 		if (i > 9)
 		{
-			padding1 = 18;
+			padding_1 = 18;
 		}
 
 		flower_names.push_back(f.second.GetName());
 
-		std::cout << std::left << i << ". " << std::setw(padding1) << f.second.GetName()
-			<< std::right << std::setw(padding2) << f.second.GetQuantity()
-			<< std::setw(padding3) << luis_fmt::to_cash(f.second.GetBuyPrice()) << "\n";
+		std::cout << std::left << i << ". " << std::setw(padding_1) << f.second.GetName()
+			<< std::right << std::setw(padding_2) << f.second.GetQuantity()
+			<< std::setw(padding_3) << luis_fmt::to_cash(f.second.GetBuyPrice()) << "\n";
 		++i;
 	}
 
