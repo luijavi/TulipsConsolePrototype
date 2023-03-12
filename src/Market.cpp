@@ -310,7 +310,7 @@ void Market::RandomizeFlowerPrice(Flower& flower)
 
 	double buy_price = luis_math::round(price_range(m_engine), 0.01);
 
-	double spread = (m_rarity_map.find(flower.GetRarity())->second.spread) / 100.0;
+	double spread = 1 - (m_rarity_map.find(flower.GetRarity())->second.spread / 100.0);
 	double sell_price = luis_math::round(buy_price * spread, 0.01);
 
 	flower.SetBuyPrice(buy_price);
