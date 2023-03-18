@@ -1,5 +1,21 @@
 #include "RandomEncounter.h"
 
+// Map for game entities with string key
+
+std::map<std::string, ImpactedEntity> entities_map
+{
+	{"City", ImpactedEntity::kCity},
+	{"Flower", ImpactedEntity::kFlower},
+	{"Game", ImpactedEntity::kGame},
+	{"Player", ImpactedEntity::kPlayer}
+};
+
+std::map<std::string, EncounterTrigger> triggers_map
+{
+	{"next_day", EncounterTrigger::kNextDay},
+	{"travel", EncounterTrigger::kFlyAway},
+	{"*", EncounterTrigger::kBoth}
+};
 
 RandomEncounter::RandomEncounter(std::string_view encounter_data)
 {
@@ -30,12 +46,12 @@ RandomEncounter::RandomEncounter(std::string_view encounter_data)
 	}
 
 	// Set the event trigger member
-	auto trigger_it = m_triggers_map.find(trigger_string);
-	m_encounter_trigger = trigger_it != m_triggers_map.end() ? trigger_it->second : EncounterTrigger::kInvalid;
+	auto trigger_it = triggers_map.find(trigger_string);
+	m_encounter_trigger = trigger_it != triggers_map.end() ? trigger_it->second : EncounterTrigger::kInvalid;
 
 	// Set impacted entity
-	auto entity_it = m_entities_map.find(entity_string);
-	m_impacted_entity = entity_it != m_entities_map.end() ? entity_it->second : ImpactedEntity::kInvalid;
+	auto entity_it = entities_map.find(entity_string);
+	m_impacted_entity = entity_it != entities_map.end() ? entity_it->second : ImpactedEntity::kInvalid;
 
 	m_probability = std::stoi(probability);
 }
