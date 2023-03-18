@@ -47,8 +47,3 @@ void EventHandler::InitRandomEncounters()
 		}
 	}
 }
-
-void EventHandler::AddRandomEncounter()
-{
-
-}
