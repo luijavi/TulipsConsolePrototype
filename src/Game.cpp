@@ -11,7 +11,8 @@ Game::Game()
 	m_market(m_engine),
 	m_has_quit(false),
 	m_day_num(0),
-	m_current_city(nullptr)
+	m_current_city(nullptr),
+	m_event_handler(m_engine)
 {
 	LoadCities();
 	//LoadRandomEncounters(); // Implement later

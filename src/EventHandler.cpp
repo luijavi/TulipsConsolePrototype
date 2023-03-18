@@ -5,7 +5,9 @@
 #include <sstream>
 
 
-EventHandler::EventHandler()
+EventHandler::EventHandler(std::mt19937_64& random_engine)
+	:
+	m_engine(random_engine)
 {
 	InitRandomEncounters();
 }

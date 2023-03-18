@@ -1,4 +1,4 @@
-$id|trigger|entity|num_callbacks|callbacks|probability|text
+$id|trigger|entity|callbacks|probability|text
 1|next_day|Player|IncreaseCash#AddFlower|20|You stumble upon a rival gang's unguarded cache.
 2|*|Flower|IncreasePrice|10|A warehouse fire burned through a rival gang's flower inventory.
 3|travel|Player|AddFlower|25|A corrupt customs agent who knows you deal in illegal flowers asks you to transport some contraband for her. Upon arriving at your destination, you find out that she was gunned down after trying to sell fake flowers.
