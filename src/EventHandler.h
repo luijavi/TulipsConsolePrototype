@@ -9,6 +9,8 @@ class EventHandler
 {
 public:
 	EventHandler(std::mt19937_64& random_engine);
+
+	RandomEncounter& FetchRandomEncounter(const EncounterTrigger& trigger);
 private:
 	void InitRandomEncounters();
 private:

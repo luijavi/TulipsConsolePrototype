@@ -5,16 +5,18 @@
 #include <map>
 #include <sstream>
 
-enum class EncounterTrigger { kNextDay, kFlyAway, kBoth, kInvalid };
+enum class EncounterTrigger { kInvalid, kNextDay = 1, kFlyAway, kBoth};
 
-enum class ImpactedEntity {kPlayer, kCity, kGame, kFlower, kInvalid };
+enum class ImpactedEntity { kInvalid, kPlayer = 1, kCity, kGame, kFlower};
 
 class RandomEncounter
 {
 public:
 	RandomEncounter(std::string_view encounter_data);
 	RandomEncounter(EncounterTrigger trigger, std::string_view encounter_text, ImpactedEntity impacted_entity, unsigned short probability);
-	
+	void Execute();
+	const EncounterTrigger& GetTrigger() const;
+	const unsigned short GetProbability() const;
 private:
 	std::vector<std::string> m_callbacks;
 	std::string m_text;

@@ -1,5 +1,7 @@
 #include "RandomEncounter.h"
 
+#include <iostream>
+
 // Map for game entities with string key
 
 std::map<std::string, ImpactedEntity> entities_map
@@ -64,4 +66,19 @@ RandomEncounter::RandomEncounter(EncounterTrigger trigger, std::string_view enco
 	m_impacted_entity(impacted_entity),
 	m_probability(probability)
 {
+}
+
+void RandomEncounter::Execute()
+{
+	std::cout << m_text << std::endl;
+}
+
+const EncounterTrigger& RandomEncounter::GetTrigger() const
+{
+	return m_encounter_trigger;
+}
+
+const unsigned short RandomEncounter::GetProbability() const
+{
+	return m_probability;
 }

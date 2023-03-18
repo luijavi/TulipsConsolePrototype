@@ -47,3 +47,28 @@ void EventHandler::InitRandomEncounters()
 		}
 	}
 }
+
+RandomEncounter& EventHandler::FetchRandomEncounter(const EncounterTrigger& trigger)
+{
+	std::uniform_int_distribution encounter_ids(1, static_cast<int>(m_encounters.size()));
+
+	int random_encounter_id = encounter_ids(m_engine);
+
+	RandomEncounter& encounter = m_encounters.find(random_encounter_id)->second;
+
+	if (encounter.GetTrigger() == EncounterTrigger::kBoth)
+	{
+		return encounter;
+	}
+	else
+	{
+		while (encounter.GetTrigger() != trigger)
+		{
+			random_encounter_id = encounter_ids(m_engine);
+			encounter = m_encounters.find(random_encounter_id)->second;
+		}
+	}
+	
+
+	return encounter;
+}

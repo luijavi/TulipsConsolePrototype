@@ -139,15 +139,11 @@ void Game::ProcessInput()
 
 
 // TODO: This might have to be deleted. Currently not being used.
-bool Game::RollForRandomEncounter()
+bool Game::RollForRandomEncounter(const RandomEncounter& random_encounter)
 {
-	const unsigned short threshold = 30;
-	
-	std::random_device rd;
+	const unsigned short threshold = random_encounter.GetProbability();
 	std::uniform_int_distribution<int> distribution(1, 100);
-	std::mt19937_64 engine(rd());
-
-	int value = distribution(engine);
+	int value = distribution(m_engine);
 
 	return value < threshold;
 }
@@ -223,11 +219,13 @@ void Game::LoadRandomEncounters()
 void Game::NextDay()
 {
 	++m_day_num;
-	if (RollForRandomEncounter())
-	{
-		std::cout << "Random Encounter!" << std::endl;
-	}
 	m_market.Update();
+	
+	RandomEncounter& random_encounter = m_event_handler.FetchRandomEncounter(EncounterTrigger::kNextDay);
+	if (RollForRandomEncounter(random_encounter))
+	{
+		random_encounter.Execute();
+	}
 }
 
 void Game::FlyAway()
@@ -297,6 +295,12 @@ void Game::FlyAway()
 		{
 			std::cout << "\nInvalid answer!\n";
 		}
+	}
+
+	RandomEncounter& random_encounter = m_event_handler.FetchRandomEncounter(EncounterTrigger::kFlyAway);
+	if (RollForRandomEncounter(random_encounter))
+	{
+		random_encounter.Execute();
 	}
 }
 
