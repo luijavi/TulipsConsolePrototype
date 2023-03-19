@@ -37,6 +37,7 @@ public:
 	void SetCash(double amount);
 
 	void AddFlower(Flower flower, int quantity);
+	void AddToInventory() {};	// TODO: This does nothing for now...
 	void RemoveFlower(const Flower& flower, int quantity);
 
 	void OpenInventory();
