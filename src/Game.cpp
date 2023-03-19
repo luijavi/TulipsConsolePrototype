@@ -308,7 +308,7 @@ void Game::FlyAway()
 	RandomEncounter& random_encounter = m_event_handler.FetchRandomEncounter(EncounterTrigger::kFlyAway);
 	if (RollForRandomEncounter(random_encounter))
 	{
-		random_encounter.Execute();
+		// random_encounter.Execute();
 	}
 }
 
