@@ -40,6 +40,10 @@ public:
 	void RemoveFlower(const Flower& flower, int quantity);
 
 	void OpenInventory();
+	
+	// Functions to remove all cash and flowers
+	void DumpInventory();
+	void DumpCash();
 private:
 	int GetPlayerResponse(const std::vector<std::string>& flower_names);
 	void ProcessSellEvent(std::string_view flower_name);

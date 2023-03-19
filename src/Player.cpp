@@ -189,6 +189,22 @@ void Player::OpenInventory()
 	}
 }
 
+void Player::DumpInventory()
+{
+	if (!m_flowers.empty())
+	{
+		m_flowers.clear();
+	}
+}
+
+void Player::DumpCash()
+{
+	if (m_cash > 0.01)
+	{
+		m_cash = 0.0f;
+	}
+}
+
 int Player::GetPlayerResponse(const std::vector<std::string>& flower_names)
 {
 	bool valid_response = false;
