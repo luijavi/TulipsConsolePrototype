@@ -53,6 +53,7 @@ private:
 
 	void NextDay();
 	void FlyAway();
+	void ChangeCity(std::string_view city);
 
 	bool GameOver();
 	bool PlayAgain(const GameOverConditions& reason);

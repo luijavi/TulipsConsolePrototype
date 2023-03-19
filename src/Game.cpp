@@ -312,6 +312,16 @@ void Game::FlyAway()
 	}
 }
 
+void Game::ChangeCity(std::string_view city)
+{
+	if (m_current_city->GetName() != city)
+	{
+		m_current_city = m_cities.find(std::string(city))->second;
+	}
+
+	m_market.Update();
+}
+
 bool Game::GameOver()
 {
 	if (m_player.GetHealth() <= 0 && !PlayAgain(GameOverConditions::kPlayerDead))
