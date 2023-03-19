@@ -68,9 +68,9 @@ RandomEncounter::RandomEncounter(EncounterTrigger trigger, std::string_view enco
 {
 }
 
-void RandomEncounter::Execute()
+void RandomEncounter::PrintMessage()
 {
-	std::cout << m_text << std::endl;
+	std::cout << "\n" << m_text << "\n\n";
 }
 
 const EncounterTrigger& RandomEncounter::GetTrigger() const
@@ -81,4 +81,9 @@ const EncounterTrigger& RandomEncounter::GetTrigger() const
 const unsigned short RandomEncounter::GetProbability() const
 {
 	return m_probability;
+}
+
+const ImpactedEntity& RandomEncounter::GetImpactedEntity() const
+{
+	return m_impacted_entity;
 }

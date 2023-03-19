@@ -46,6 +46,7 @@ private:
 	void DisplayMenu();
 	void ProcessInput();
 	bool RollForRandomEncounter(const RandomEncounter& random_encounter);
+	void HandleRandomEncounter(const RandomEncounter& random_encounter);
 
 	void LoadCities();
 	void LoadRandomEncounters();

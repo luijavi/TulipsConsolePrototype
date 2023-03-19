@@ -148,6 +148,14 @@ bool Game::RollForRandomEncounter(const RandomEncounter& random_encounter)
 	return value < threshold;
 }
 
+void Game::HandleRandomEncounter(const RandomEncounter& random_encounter)
+{
+	if (random_encounter.GetImpactedEntity() == ImpactedEntity::kCity)
+	{
+
+	}
+}
+
 // Loads and parses CitiesList.txt file, which includes the details to fill
 // a City object.
 void Game::LoadCities()
@@ -224,7 +232,7 @@ void Game::NextDay()
 	RandomEncounter& random_encounter = m_event_handler.FetchRandomEncounter(EncounterTrigger::kNextDay);
 	if (RollForRandomEncounter(random_encounter))
 	{
-		random_encounter.Execute();
+		HandleRandomEncounter(random_encounter);
 	}
 }
 

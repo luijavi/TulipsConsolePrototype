@@ -68,7 +68,5 @@ RandomEncounter& EventHandler::FetchRandomEncounter(const EncounterTrigger& trig
 			encounter = m_encounters.find(random_encounter_id)->second;
 		}
 	}
-	
-
 	return encounter;
 }

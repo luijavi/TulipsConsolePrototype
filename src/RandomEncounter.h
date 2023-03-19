@@ -14,9 +14,10 @@ class RandomEncounter
 public:
 	RandomEncounter(std::string_view encounter_data);
 	RandomEncounter(EncounterTrigger trigger, std::string_view encounter_text, ImpactedEntity impacted_entity, unsigned short probability);
-	void Execute();
+	void PrintMessage();
 	const EncounterTrigger& GetTrigger() const;
 	const unsigned short GetProbability() const;
+	const ImpactedEntity& GetImpactedEntity() const;
 private:
 	std::vector<std::string> m_callbacks;
 	std::string m_text;
