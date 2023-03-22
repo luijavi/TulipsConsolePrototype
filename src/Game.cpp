@@ -293,7 +293,6 @@ void Game::FlyAway()
 		}
 		else if (std::stoi(player_choice) > 0 && std::stoi(player_choice) < option_num)
 		{
-			// TODO: Figure out what to do with this warning (C26451)
 			m_current_city = m_cities.at(city_options.at(std::stoi(player_choice) - 1));
 			++m_day_num;
 			m_market.Update();
