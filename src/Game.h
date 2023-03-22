@@ -9,7 +9,7 @@
 #include "Player.h"
 #include "City.h"
 #include "Flower.h"
-#include "EventHandler.h"
+#include "EncounterHandler.h"
 #include "Market.h"
 
 enum class MainMenuOptions
@@ -60,7 +60,7 @@ private:
 	void ResetGame();
 	bool ConfirmQuit();
 private:
-	EventHandler m_event_handler;
+	EncounterHandler m_encounter_handler;
 	std::random_device m_rd;
 	std::mt19937_64 m_engine;
 

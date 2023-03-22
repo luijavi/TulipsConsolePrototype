@@ -9,7 +9,7 @@ $id|trigger|entity|callbacks|probability|text
 8|next_day|Player|IncreaseCash|60|Bank error in your favor. Just kidding -- you commit wire fraud and get away with it.
 9|travel|Player|DecreaseCash|40|You get caught by customs transporting flowers and offer a bribe, which they accept.
 10|travel|Player|DecreaseCash#RemoveFlower|30|After getting caught by customs and offering your usual bribe, they feel insulted by the amount and proceed to confiscate some of your flowers and the bribe money.
-11|travel|Player|FlyAway|25|The customs agent you offered a bribe to after being caught with flowers turns out to be a true civil servant. They arrest and deport you, taking away all of your inventory and money.
+11|travel|Game|FlyAway|25|The customs agent you offered a bribe to after being caught with flowers turns out to be a true civil servant. They arrest and deport you, taking away all of your inventory and money.
 12|travel|Player|DecreaseCash|40|Multiple customs agents shake you down for cash after arriving and getting caught with flowers.
 13|*|Player|RemoveFlower|30|It turns out that some of the water you used to keep your flowers in was contaminated.
 14|next_day|Player|RemoveFlower|40|While taking the train, someone grabs one of your flower bags and runs just as the doors are closing.

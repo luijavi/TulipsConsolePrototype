@@ -19,6 +19,8 @@ std::map<std::string, EncounterTrigger> triggers_map
 	{"*", EncounterTrigger::kBoth}
 };
 
+
+
 RandomEncounter::RandomEncounter(std::string_view encounter_data)
 {
 	std::istringstream iss(static_cast<std::string>(encounter_data));

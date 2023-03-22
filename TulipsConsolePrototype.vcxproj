@@ -81,7 +81,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\City.cpp" />
-    <ClCompile Include="src\EventHandler.cpp" />
+    <ClCompile Include="src\EncounterHandler.cpp" />
     <ClCompile Include="src\Flower.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Main.cpp" />
@@ -93,8 +93,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\City.h" />
-    <ClInclude Include="src\EventHandler.h" />
+    <ClInclude Include="src\EncounterHandler.h" />
     <ClInclude Include="src\Flower.h" />
+    <ClInclude Include="src\EncounterCallback.h" />
     <ClInclude Include="src\Market.h" />
     <ClInclude Include="src\RandomEncounter.h" />
     <ClInclude Include="src\Rarity.h" />

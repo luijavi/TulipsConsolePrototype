@@ -12,7 +12,7 @@ Game::Game()
 	m_has_quit(false),
 	m_day_num(0),
 	m_current_city(nullptr),
-	m_event_handler(m_engine)
+	m_encounter_handler(m_engine)
 {
 	LoadCities();
 	//LoadRandomEncounters(); // Implement later
@@ -229,7 +229,7 @@ void Game::NextDay()
 	++m_day_num;
 	m_market.Update();
 	
-	RandomEncounter& random_encounter = m_event_handler.FetchRandomEncounter(EncounterTrigger::kNextDay);
+	RandomEncounter& random_encounter = m_encounter_handler.FetchRandomEncounter(EncounterTrigger::kNextDay);
 	if (RollForRandomEncounter(random_encounter))
 	{
 		HandleRandomEncounter(random_encounter);
@@ -305,7 +305,7 @@ void Game::FlyAway()
 		}
 	}
 
-	RandomEncounter& random_encounter = m_event_handler.FetchRandomEncounter(EncounterTrigger::kFlyAway);
+	RandomEncounter& random_encounter = m_encounter_handler.FetchRandomEncounter(EncounterTrigger::kFlyAway);
 	if (RollForRandomEncounter(random_encounter))
 	{
 		// random_encounter.Execute();

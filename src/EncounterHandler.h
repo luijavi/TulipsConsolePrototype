@@ -5,10 +5,10 @@
 #include <map>
 #include <random>
 
-class EventHandler
+class EncounterHandler
 {
 public:
-	EventHandler(std::mt19937_64& random_engine);
+	EncounterHandler(std::mt19937_64& random_engine);
 
 	RandomEncounter& FetchRandomEncounter(const EncounterTrigger& trigger);
 private:

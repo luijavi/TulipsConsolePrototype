@@ -39,7 +39,7 @@
     <ClCompile Include="src\Flower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\EventHandler.cpp">
+    <ClCompile Include="src\EncounterHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Market.cpp">
@@ -71,13 +71,16 @@
     <ClInclude Include="src\Resource_UNUSED.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\EventHandler.h">
+    <ClInclude Include="src\EncounterHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Market.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Rarity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EncounterCallback.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

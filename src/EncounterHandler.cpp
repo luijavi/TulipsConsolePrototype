@@ -1,18 +1,18 @@
-#include "EventHandler.h"
+#include "EncounterHandler.h"
 
 #include <fstream>
 #include <iostream>
 #include <sstream>
 
 
-EventHandler::EventHandler(std::mt19937_64& random_engine)
+EncounterHandler::EncounterHandler(std::mt19937_64& random_engine)
 	:
 	m_engine(random_engine)
 {
 	InitRandomEncounters();
 }
 
-void EventHandler::InitRandomEncounters()
+void EncounterHandler::InitRandomEncounters()
 {
 	std::string filename = "Resources\\RandomEncounters.txt";
 	std::ifstream file{ filename, std::ios::in };
@@ -48,7 +48,7 @@ void EventHandler::InitRandomEncounters()
 	}
 }
 
-RandomEncounter& EventHandler::FetchRandomEncounter(const EncounterTrigger& trigger)
+RandomEncounter& EncounterHandler::FetchRandomEncounter(const EncounterTrigger& trigger)
 {
 	std::uniform_int_distribution encounter_ids(1, static_cast<int>(m_encounters.size()));
 
